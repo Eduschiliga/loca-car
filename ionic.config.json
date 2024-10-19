@@ -1,0 +1,8 @@
+{
+  "name": "Loca Car",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "95081233"
+}
