@@ -1,6 +1,35 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser';
+import {appRouting} from "./app/app.route";
+import {provideIonicAngular} from "@ionic/angular/standalone";
+import {AppComponent} from "./app/app.component";
+import { addIcons } from 'ionicons';
+import {
+  archiveSharp,
+  bookmarkOutline,
+  bookmarkSharp,
+  heartSharp, mailSharp,
+  paperPlaneSharp,
+  trashSharp,
+  warningSharp,
+  personOutline,
+  personSharp
+} from "ionicons/icons";
 
-import { AppModule } from './app/app.module';
+addIcons({
+  'bookmark-sharp': bookmarkSharp,
+  'bookmark-outline': bookmarkOutline,
+  'warning-sharp': warningSharp,
+  'mail-sharp': mailSharp,
+  'paper-plane-sharp': paperPlaneSharp,
+  'heart-sharp': heartSharp,
+  'archive-sharp': archiveSharp,
+  'trash-sharp': trashSharp,
+  'person-outline': personOutline,
+  'person-sharp': personSharp,
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+});
+
+
+bootstrapApplication(AppComponent, {
+  providers: [appRouting, provideIonicAngular()]
+}).catch(err => console.error(err));

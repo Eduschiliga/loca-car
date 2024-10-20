@@ -1,0 +1,12 @@
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      LocaCar Login
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input label="Usuário" label-placement="stacked" fill="outline" placeholder="Informe o seu usuário" [(ngModel)]="usuario.nome"></ion-input>
+      <ion-input label="Senha" label-placement="stacked" type="password" placeholder="Informe a sua senha" [(ngModel)]="usuario.senha"></ion-input>
+      <ion-button expand="full" color="primary" (click)="login()">Entrar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
