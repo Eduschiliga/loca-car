@@ -1,35 +1,18 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import {appRouting} from "./app/app.route";
-import {provideIonicAngular} from "@ionic/angular/standalone";
-import {AppComponent} from "./app/app.component";
+import { appRouting } from "./app/app.route";
+import { provideIonicAngular } from "@ionic/angular/standalone";
+import { AppComponent } from "./app/app.component";
 import { addIcons } from 'ionicons';
-import {
-  archiveSharp,
-  bookmarkOutline,
-  bookmarkSharp,
-  heartSharp, mailSharp,
-  paperPlaneSharp,
-  trashSharp,
-  warningSharp,
-  personOutline,
-  personSharp
-} from "ionicons/icons";
+import * as allIcons from 'ionicons/icons';
+import { provideHttpClient } from "@angular/common/http";
 
-addIcons({
-  'bookmark-sharp': bookmarkSharp,
-  'bookmark-outline': bookmarkOutline,
-  'warning-sharp': warningSharp,
-  'mail-sharp': mailSharp,
-  'paper-plane-sharp': paperPlaneSharp,
-  'heart-sharp': heartSharp,
-  'archive-sharp': archiveSharp,
-  'trash-sharp': trashSharp,
-  'person-outline': personOutline,
-  'person-sharp': personSharp,
+const icons = Object.keys(allIcons).reduce((acc: { [key: string]: any }, name) => {
+  acc[name] = (allIcons as any)[name];
+  return acc;
+}, {});
 
-});
-
+addIcons(icons);
 
 bootstrapApplication(AppComponent, {
-  providers: [appRouting, provideIonicAngular()]
+  providers: [appRouting, provideIonicAngular(), provideHttpClient()]
 }).catch(err => console.error(err));

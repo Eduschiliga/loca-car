@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ nomePagina }}</ion-title>
+  </ion-toolbar>
+
+  @if (barraPesquisa.mostrar) {
+    <ion-toolbar>
+      <ion-searchbar style="padding: 0!important; box-shadow: none !important;" class="custom" [placeholder]="barraPesquisa.placeholder" show-clear-button="always" (ionInput)="handleInput($event)"></ion-searchbar>
+    </ion-toolbar>
+  }
+</ion-header>
