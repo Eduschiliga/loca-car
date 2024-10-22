@@ -1,12 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="true"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecalho nomePagina="Home" [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}" (inputPesquisa)="pesquisaModeloMarca($event)"></app-cabecalho>
 
-<ion-content [fullscreen]="true">
-  <ion-title>Home</ion-title>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-spinner *ngIf="loading"></ion-spinner>
+  <div *ngIf="erroCarregamento" class="error-message">Falha ao carregar carros.</div>
+  <div *ngIf="!loading && !erroCarregamento">
+    <div *ngFor="let carro of carrosFiltrados">
+      <app-card-carro [carro]="carro"></app-card-carro>
+    </div>
+  </div>
 </ion-content>

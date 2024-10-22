@@ -1,0 +1,19 @@
+{
+  "nome": "João da Silva",
+  "email": "joao@email.com",
+  "senha": "admin",
+  "permanecerConectado": true,
+  "dataNascimento": "1990-01-01",
+  "endereco": {
+    "cep": "01001-000",
+    "logradouro": "Praça da Sé",
+    "complemento": "lado ímpar",
+    "bairro": "Sé",
+    "localidade": "São Paulo",
+    "uf": "SP",
+    "unidade": "",
+    "ibge": "3550308",
+    "gia": "1004"
+  },
+  "token": "faketoken1234567890"
+}

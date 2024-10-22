@@ -1,12 +1,44 @@
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      LocaCar Login
-    </ion-card-header>
-    <ion-card-content>
-      <ion-input label="Usuário" label-placement="stacked" fill="outline" placeholder="Informe o seu usuário" [(ngModel)]="usuario.nome"></ion-input>
-      <ion-input label="Senha" label-placement="stacked" type="password" placeholder="Informe a sua senha" [(ngModel)]="usuario.senha"></ion-input>
-      <ion-button expand="full" color="primary" (click)="login()">Entrar</ion-button>
-    </ion-card-content>
-  </ion-card>
+  <ion-grid fixed class="ion-padding">
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100vh;">
+      <form>
+        <ion-col size-md="8" size-lg="4" size-sm="8" size-xs="12" class="ion-padding">
+
+          <ion-item class="ion-margin-bottom">
+            <ion-label mode="ios" position="stacked">Usuário</ion-label>
+            <ion-input mode="ios" fill="outline" placeholder="Informe o seu e-mail" email
+                       [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+              <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon>
+            </ion-input>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+            <ion-label mode="ios" position="stacked">Senha</ion-label>
+            <ion-input mode="ios" type="password" fill="outline" placeholder="Informe a sua senha" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
+              <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="ion-margin-bottom">
+            <ion-checkbox slot="start" [(ngModel)]="usuario.permanecerConectado" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            <ion-label>Permanecer conectado</ion-label>
+          </ion-item>
+
+          <div class="ion-text-center">
+            <ion-button expand="block" class="gradient-button ion-margin-top ion-margin-bottom" shape="round" (click)="login()">
+              Entrar
+              <ion-icon slot="end" name="send-outline"></ion-icon>
+            </ion-button>
+
+            <ion-button class="ion-margin-top" expand="block" fill="outline" shape="round" color="secondary" (click)="registrarUsuario()">
+              Cadastre-se
+              <ion-icon slot="end" name="person-add-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </form>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>
+

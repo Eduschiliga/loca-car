@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "marca": "Toyota",
+    "modelo": "Corolla",
+    "ano": 2022,
+    "preco": 80000,
+    "quilometragem": 5000,
+    "tipoCombustivel": "Gasolina",
+    "transmissao": "Automática",
+    "cor": "Prata",
+    "localizacao": {
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "pais": "Brasil",
+      "endereco": "Rua Exemplo, 123"
+    },
+    "motor": {
+      "potencia": 168,
+      "cilindrada": 1987
+    },
+    "status": "Disponível",
+    "imagens": [
+      "corola.jpg",
+      "corola2.jpg"
+    ],
+    "descricao": "Um carro muito confortável e econômico.",
+    "caracteristicas": [
+      "Ar-condicionado",
+      "Airbag",
+      "ABS"
+    ],
+    "proprietario": {
+      "nome": "João Silva",
+      "contato": {
+        "telefone": "+5511999999999",
+        "email": "joao.silva@example.com"
+      }
+    },
+    "dataCriacao": "2023-10-01T00:00:00Z",
+    "dataAtualizacao": "2023-10-01T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "marca": "Honda",
+    "modelo": "Civic",
+    "ano": 2021,
+    "preco": 85000,
+    "quilometragem": 10000,
+    "tipoCombustivel": "Gasolina",
+    "transmissao": "Manual",
+    "cor": "Preto",
+    "localizacao": {
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "pais": "Brasil",
+      "endereco": "Avenida Exemplo, 456"
+    },
+    "motor": {
+      "potencia": 174,
+      "cilindrada": 1996
+    },
+    "status": "Alugado",
+    "imagens": [
+      "https://link-para-imagem-3.com",
+      "https://link-para-imagem-4.com"
+    ],
+    "descricao": "Carro esportivo com excelente desempenho.",
+    "caracteristicas": [
+      "Ar-condicionado",
+      "Airbag",
+      "ABS",
+      "Teto solar"
+    ],
+    "proprietario": {
+      "nome": "Maria Oliveira",
+      "contato": {
+        "telefone": "+5521999999999",
+        "email": "maria.oliveira@example.com"
+      }
+    },
+    "dataCriacao": "2023-09-15T00:00:00Z",
+    "dataAtualizacao": "2023-09-15T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "marca": "Ford",
+    "modelo": "Fiesta",
+    "ano": 2020,
+    "preco": 45000,
+    "quilometragem": 30000,
+    "tipoCombustivel": "Híbrido",
+    "transmissao": "CVT",
+    "cor": "Azul",
+    "localizacao": {
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "pais": "Brasil",
+      "endereco": "Rua Exemplo, 789"
+    },
+    "motor": {
+      "potencia": 120,
+      "cilindrada": 1596
+    },
+    "status": "Vendido",
+    "imagens": [
+      "https://link-para-imagem-5.com",
+      "https://link-para-imagem-6.com"
+    ],
+    "descricao": "Compacto e econômico, ideal para a cidade.",
+    "caracteristicas": [
+      "Ar-condicionado",
+      "Airbag",
+      "ABS",
+      "Direção elétrica"
+    ],
+    "proprietario": {
+      "nome": "Carlos Pereira",
+      "contato": {
+        "telefone": "+5531999999999",
+        "email": "carlos.pereira@example.com"
+      }
+    },
+    "dataCriacao": "2023-08-20T00:00:00Z",
+    "dataAtualizacao": "2023-08-20T00:00:00Z"
+  }
+]
