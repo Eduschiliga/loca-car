@@ -14,6 +14,30 @@ export const routes: Routes = [
     canLoad: [authGuardCanLoad],
   },
   {
+    path: 'publicacoesUsuario',
+    loadChildren: () => import('./minhas-publicacoes/minhas-publicacoes.route').then((r) => r.MINHAS_PUBLICACOES),
+    canActivate: [authGuard],
+    canLoad: [authGuardCanLoad],
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.route').then((r) => r.PERFIL_ROUTES),
+    canActivate: [authGuard],
+    canLoad: [authGuardCanLoad],
+  },
+  {
+    path: 'publicar',
+    loadChildren: () => import('./publicar/publicar.route').then((r) => r.PUBLICAR_ROUTE),
+    canActivate: [authGuard],
+    canLoad: [authGuardCanLoad],
+  },
+  {
+    path: 'Configurações',
+    loadChildren: () => import('./configuracoes/configuracoes.route').then((r) => r.CONFIGURACOES_ROUTE),
+    canActivate: [authGuard],
+    canLoad: [authGuardCanLoad],
+  },
+  {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.route').then(m => m.folderRoutes),
     canActivate: [authGuard],

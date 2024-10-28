@@ -4,7 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Usuario } from '../../models/usuario';
-import { UsuarioService } from "../usuario/usuario.service";
+import { UsuarioService } from "../usuario/api/usuario.service";
+import {UsuarioStateService} from "../usuario/state/usuario-state.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ import { UsuarioService } from "../usuario/usuario.service";
 export class AuthService {
   private usuarioAutenticado: boolean = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
+  usuario!: Usuario;
 
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
+    private usuarioState: UsuarioStateService
   ) {
     this.verificarToken().subscribe();
   }
@@ -24,6 +27,8 @@ export class AuthService {
     this.usuarioService.getUsuario(usuario.email!, usuario.senha!).subscribe({
       next: (dadosUsuario: Usuario | null) => {
         if (dadosUsuario) {
+          this.usuario = dadosUsuario;
+          this.usuarioState.setUsuario(dadosUsuario);
           if (usuario.permanecerConectado) {
             const tokenDeAcesso = 'faketoken1234567890';
             localStorage.setItem('tokenDeAcesso', tokenDeAcesso);
@@ -64,6 +69,8 @@ export class AuthService {
       return this.usuarioService.getUsuarioPorToken(token).pipe(
         map((dadosUsuario: Usuario | null) => {
           if (dadosUsuario) {
+            this.usuario = dadosUsuario;
+            this.usuarioState.setUsuario(dadosUsuario);
             this.usuarioAutenticado = true;
             this.mostrarMenuEmitter.emit(true);
             return true;

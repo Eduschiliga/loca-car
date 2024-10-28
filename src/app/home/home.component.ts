@@ -9,6 +9,7 @@ import {CarroApiService} from "../services/carro/api/carro-api.service";
 import {Carro} from "../models/carro";
 import {FormsModule} from "@angular/forms";
 import {CardCarroComponent} from "../detalhe-carro/components/card-carro/card-carro.component";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -21,7 +22,8 @@ import {CardCarroComponent} from "../detalhe-carro/components/card-carro/card-ca
     CabecalhoComponent,
     CommonModule,
     FormsModule,
-    CardCarroComponent
+    CardCarroComponent,
+    RouterLink
   ],
   standalone: true,
 })

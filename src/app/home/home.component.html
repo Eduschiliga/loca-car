@@ -1,11 +1,36 @@
-<app-cabecalho nomePagina="Home" [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}" (inputPesquisa)="pesquisaModeloMarca($event)"></app-cabecalho>
+<app-cabecalho nomePagina="Home" [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}"
+               (inputPesquisa)="pesquisaModeloMarca($event)"></app-cabecalho>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-spinner *ngIf="loading"></ion-spinner>
-  <div *ngIf="erroCarregamento" class="error-message">Falha ao carregar carros.</div>
-  <div *ngIf="!loading && !erroCarregamento">
-    <div *ngFor="let carro of carrosFiltrados">
-      <app-card-carro [carro]="carro"></app-card-carro>
-    </div>
-  </div>
+  @if (loading) {
+    <ion-spinner></ion-spinner>
+  }
+
+  @if (erroCarregamento) {
+    <div class="error-message">Falha ao carregar carros.</div>
+  } @else {
+    <ion-toolbar style="border-radius: 8px" class="ion-margin-bottom">
+      <ion-button expand="block"
+                  class="ion-padding-horizontal stroke-text gradient-button ion-margin-top ion-margin-bottom ion-text-center ion-justify-content-center ion-align-items-center"
+                  shape="round">
+        Publicar Carro
+        <ion-icon slot="end" name="car-outline"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+
+    <ion-toolbar class="ion-no-padding shadow-box" style="border-radius: 8px">
+      <p class="ion-padding-horizontal">{{ carrosFiltrados.length }} resultados.</p>
+      @if (carrosFiltrados.length === 0 && !erroCarregamento) {
+        <h1 class="ion-padding-horizontal">Sem carros para o filtro</h1>
+      }
+    </ion-toolbar>
+
+    @if (!loading && !erroCarregamento) {
+      @for (carro of carrosFiltrados; track $index) {
+        <app-card-carro [carro]="carro"></app-card-carro>
+
+      }
+    }
+  }
+
 </ion-content>

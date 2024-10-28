@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicModule, LoadingController} from '@ionic/angular';
-import {Usuario} from '../models/usuario';
-import {AuthService} from '../services/auth/auth.service';
+import {Usuario} from '../../../models/usuario';
+import {AuthService} from '../../../services/auth/auth.service';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
-import {LoadingService} from "../shared/loading/loading.service";
+import {LoadingService} from "../../../shared/loading/loading.service";
+import {UsuarioStateService} from "../../../services/usuario/state/usuario-state.service";
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,6 @@ export class LoginComponent implements OnInit {
 
       this.authService.verificarToken().subscribe({
         next: (autenticado) => {
-
           if (autenticado) {
             this.router.navigate(['/home']);
           }
@@ -63,6 +63,6 @@ export class LoginComponent implements OnInit {
   }
 
   protected registrarUsuario(): void {
-    this.router.navigate(['/registro']);
+    this.router.navigate(['login/cadastrar']);
   }
 }

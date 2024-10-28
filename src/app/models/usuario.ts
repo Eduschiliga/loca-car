@@ -8,5 +8,9 @@ export interface Usuario {
   dataNascimento: string;
   endereco: Endereco;
   token?: string;
+  contato: {
+    telefone: string;
+    email: string;
+  };
 }
 

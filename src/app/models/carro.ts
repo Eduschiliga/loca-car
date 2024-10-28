@@ -1,3 +1,5 @@
+import {Usuario} from "./usuario";
+
 export interface Carro {
   id: number;
   marca: string;
@@ -22,13 +24,7 @@ export interface Carro {
   imagens: string[];
   descricao: string;
   caracteristicas: string[];
-  proprietario: {
-    nome: string;
-    contato: {
-      telefone: string;
-      email: string;
-    };
-  };
+  usuario: Usuario;
   dataCriacao: Date;
   dataAtualizacao: Date;
 }

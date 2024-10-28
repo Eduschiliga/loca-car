@@ -13,3 +13,10 @@
 
 
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.gradient-button {
+  --background: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  --background-activated: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  --background-focused: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  --background-disabled: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+}

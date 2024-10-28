@@ -30,13 +30,31 @@
       "Airbag",
       "ABS"
     ],
-    "proprietario": {
-      "nome": "João Silva",
+    "usuario": {
+      "nome": "João da Silva",
+      "email": "joao@email.com",
+      "senha": "admin",
       "contato": {
-        "telefone": "+5511999999999",
-        "email": "joao.silva@example.com"
-      }
-    },
+        "telefone": "42998372701",
+        "email": "email@email"
+      },
+      "permanecerConectado": true,
+      "dataNascimento": "1990-01-01",
+      "endereco": {
+        "cep": "01001-000",
+        "logradouro": "Praça da Sé",
+        "complemento": "lado ímpar",
+        "bairro": "Sé",
+        "localidade": "São Paulo",
+        "uf": "SP",
+        "unidade": "",
+        "ibge": "3550308",
+        "gia": "1004"
+      },
+      "token": "faketoken1234567890"
+    }
+  ,
+
     "dataCriacao": "2023-10-01T00:00:00Z",
     "dataAtualizacao": "2023-10-01T00:00:00Z"
   },
@@ -62,8 +80,10 @@
     },
     "status": "Alugado",
     "imagens": [
-      "https://link-para-imagem-3.com",
-      "https://link-para-imagem-4.com"
+      "corola.jpg",
+      "corola.jpg",
+      "corola.jpg",
+      "corola2.jpg"
     ],
     "descricao": "Carro esportivo com excelente desempenho.",
     "caracteristicas": [
@@ -72,13 +92,30 @@
       "ABS",
       "Teto solar"
     ],
-    "proprietario": {
-      "nome": "Maria Oliveira",
+    "usuario": {
+      "nome": "João da Silva",
+      "email": "joao@email.com",
+      "senha": "admin",
       "contato": {
-        "telefone": "+5521999999999",
-        "email": "maria.oliveira@example.com"
-      }
-    },
+        "telefone": "42998372701",
+        "email": "email@email"
+      },
+      "permanecerConectado": true,
+      "dataNascimento": "1990-01-01",
+      "endereco": {
+        "cep": "01001-000",
+        "logradouro": "Praça da Sé",
+        "complemento": "lado ímpar",
+        "bairro": "Sé",
+        "localidade": "São Paulo",
+        "uf": "SP",
+        "unidade": "",
+        "ibge": "3550308",
+        "gia": "1004"
+      },
+      "token": "faketoken1234567890"
+    }
+  ,
     "dataCriacao": "2023-09-15T00:00:00Z",
     "dataAtualizacao": "2023-09-15T00:00:00Z"
   },
@@ -104,8 +141,10 @@
     },
     "status": "Vendido",
     "imagens": [
-      "https://link-para-imagem-5.com",
-      "https://link-para-imagem-6.com"
+      "corola.jpg",
+      "corola2.jpg",
+      "corola2.jpg",
+      "corola2.jpg"
     ],
     "descricao": "Compacto e econômico, ideal para a cidade.",
     "caracteristicas": [
@@ -114,13 +153,26 @@
       "ABS",
       "Direção elétrica"
     ],
-    "proprietario": {
-      "nome": "Carlos Pereira",
-      "contato": {
-        "telefone": "+5531999999999",
-        "email": "carlos.pereira@example.com"
-      }
-    },
+    "usuario": {
+      "nome": "João da Silva",
+      "email": "joao@email.com",
+      "senha": "admin",
+      "permanecerConectado": true,
+      "dataNascimento": "1990-01-01",
+      "endereco": {
+        "cep": "01001-000",
+        "logradouro": "Praça da Sé",
+        "complemento": "lado ímpar",
+        "bairro": "Sé",
+        "localidade": "São Paulo",
+        "uf": "SP",
+        "unidade": "",
+        "ibge": "3550308",
+        "gia": "1004"
+      },
+      "token": "faketoken1234567890"
+    }
+  ,
     "dataCriacao": "2023-08-20T00:00:00Z",
     "dataAtualizacao": "2023-08-20T00:00:00Z"
   }

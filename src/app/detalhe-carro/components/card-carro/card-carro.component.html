@@ -1,12 +1,20 @@
-<ion-card (click)="setOpen(true)">
-  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-  <ion-card-header>
-    <ion-card-title>{{ carro.modelo }}</ion-card-title>
-    <ion-card-subtitle>{{ carro.marca }}</ion-card-subtitle>
-  </ion-card-header>
+<ion-card>
+  <div (click)="setOpen(true)" style="cursor: pointer">
+    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%" style="object-fit: fill"/>
+    <ion-card-header>
+      <ion-card-title>{{ carro.modelo }}</ion-card-title>
+      <ion-card-subtitle>{{ carro.marca }}</ion-card-subtitle>
+    </ion-card-header>
 
+    <ion-card-content>
+      {{ carro.descricao }}
+    </ion-card-content>
+  </div>
   <ion-card-content>
-    {{carro.descricao}}
+    <ion-button class="ion-justify-content-center ion-align-items-center ion-text-center gradient-button">
+      Demonstrar interesse
+      <ion-icon size="large" name="heart" aria-hidden="true"></ion-icon>
+    </ion-button>
   </ion-card-content>
 </ion-card>
 
@@ -22,12 +30,214 @@
     </ion-header>
     <ion-content class="ion-padding">
       <swiper-container [pagination]="{ el: '.swiper-pagination', clickable: true }">
-        @for(img of carro.imagens; track img) {
+        @for (img of carro.imagens; track img) {
           <swiper-slide>
-            <img src="{{URL_IMG + img}}" alt="Logo">
+            <img src="{{URL_IMG + img}}" alt="Logo" width="100%" height="250px" style="border-radius: 8px" class="shadow-box">
           </swiper-slide>
         }
       </swiper-container>
+
+      <section class="ion-padding">
+        <div class="titulo">
+          <ion-title>{{ carro.marca }} {{ carro.modelo }} - {{ carro.ano }}</ion-title>
+        </div>
+        <ion-grid class="ion-no-padding" fixed>
+          <!-- Informações do Veículo -->
+          <ion-row>
+            <ion-col size="12">
+              <ion-label color="primary">
+                <h2><strong>Informações do Veículo</strong></h2>
+              </ion-label>
+              <ion-grid class="ion-no-padding">
+                <!-- Preço e Quilometragem -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="pricetag-outline"></ion-icon>
+                        Preço
+                      </div>
+                      <div class="info-value">{{ carro.preco | currency: 'BRL' }}</div>
+                    </div>
+                  </ion-col>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="speedometer-outline"></ion-icon>
+                        Quilometragem
+                      </div>
+                      <div class="info-value">{{ carro.quilometragem | number }} km</div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+
+          <!-- Especificações Técnicas -->
+          <ion-row>
+            <ion-col size="12">
+              <ion-label color="primary">
+                <h2><strong>Especificações Técnicas</strong></h2>
+              </ion-label>
+              <ion-grid class="ion-no-padding">
+                <!-- Combustível, Transmissão e Motor -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="flame-outline"></ion-icon>
+                        Combustível
+                      </div>
+                      <div class="info-value">{{ carro.tipoCombustivel }}</div>
+                    </div>
+                  </ion-col>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="construct-outline"></ion-icon>
+                        Transmissão
+                      </div>
+                      <div class="info-value">{{ carro.transmissao }}</div>
+                    </div>
+                  </ion-col>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="speedometer-outline"></ion-icon>
+                        Motor
+                      </div>
+                      <div class="info-value">{{ carro.motor.potencia }} CV - {{ carro.motor.cilindrada }}cc
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <!-- Status -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="checkmark-circle-outline"></ion-icon>
+                        Status
+                      </div>
+                      <div class="info-value">
+                        <ion-chip class="ion-padding shadow-box">{{ carro.status }}</ion-chip>
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+
+          <!-- Localização -->
+          <ion-row>
+            <ion-col size="12" size-md="6">
+              <ion-label color="primary">
+                <h2><strong>Localização</strong></h2>
+              </ion-label>
+              <ion-grid class="ion-no-padding">
+                <!-- Endereço -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="location-outline"></ion-icon>
+                        Endereço
+                      </div>
+                      <div class="info-value">{{ carro.localizacao.endereco }}, {{ carro.localizacao.cidade }}
+                        , {{ carro.localizacao.estado }}, {{ carro.localizacao.pais }}
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+
+          <!-- Outras Informações -->
+          <ion-row>
+            <ion-col size="12" size-md="6">
+              <ion-label color="primary">
+                <h2><strong>Outras Informações</strong></h2>
+              </ion-label>
+              <ion-grid class="ion-no-padding">
+                <!-- Descrição -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="information-circle-outline"></ion-icon>
+                        Descrição
+                      </div>
+                      <div class="info-value">{{ carro.descricao }}</div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <!-- Características -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="list-circle-outline"></ion-icon>
+                        Características
+                      </div>
+                      <div class="info-value">
+                        @for (item of carro.caracteristicas; track $index) {
+                          <ion-chip class="ion-padding shadow-box">{{ item }}</ion-chip>
+                        }
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+
+          <!-- Contato -->
+          <ion-row>
+            <ion-col size="12">
+              <ion-label color="primary">
+                <h2><strong>Contato</strong></h2>
+              </ion-label>
+              <ion-grid class="ion-no-padding">
+                <!-- Telefone e Email -->
+                <ion-row>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="call-outline"></ion-icon>
+                        Telefone
+                      </div>
+                      <div class="info-value">{{ carro.usuario.contato?.telefone }}</div>
+                    </div>
+                  </ion-col>
+                  <ion-col size="12">
+                    <div class="info-container">
+                      <div class="info-label">
+                        <ion-icon class="shadow-box"  size="large" name="mail-outline"></ion-icon>
+                        Email
+                      </div>
+                      <div class="info-value">{{ carro.usuario.contato?.email }}</div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+              <!-- Botão de Contato -->
+              <ion-button expand="full" color="success"
+                          (click)="presentAlertaSiteExterno(carro.usuario.contato?.telefone)"
+                          class="ion-padding shadow-box" shape="round">
+                <ion-icon  size="large" name="logo-whatsapp"></ion-icon>
+                <span text-wrap
+                      class="ion-margin-start"><strong>Clique aqui para conversar com o proprietário</strong></span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </section>
+
+
     </ion-content>
   </ng-template>
 </ion-modal>
