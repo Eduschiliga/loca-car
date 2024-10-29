@@ -8,7 +8,7 @@ export interface Carro {
   preco: number;
   quilometragem: number;
   tipoCombustivel: 'Gasolina' | 'Diesel' | 'Elétrico' | 'Híbrido';
-  transmissao: 'Manual' | 'Automática' | 'CVT';
+  transmissao: 'Manual' | 'Automática';
   cor: string;
   localizacao: {
     cidade: string;
