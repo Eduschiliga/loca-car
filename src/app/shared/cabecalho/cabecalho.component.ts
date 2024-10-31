@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
+import { RouterModule } from '@angular/router';
 
 interface BarraPesquisa {
   mostrar: boolean;
