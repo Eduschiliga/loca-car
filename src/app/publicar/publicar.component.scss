@@ -1,0 +1,18 @@
+ion-item-divider {
+  color: var(--ion-color-primary-contrast);
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+ion-list {
+  border-radius: 10px !important;
+}
+
+ion-item-group {
+  padding: 1rem;
+}
+
+ion-item-group * {
+  margin-bottom: 1.5rem !important;
+}

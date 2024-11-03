@@ -1,7 +1,8 @@
 {
-  "nome": "João da Silva",
-  "email": "joao@email.com",
+  "nome": "Eduardo Schiliga",
+  "email": "admin@email.com",
   "senha": "admin",
+  "telefone": "42998372701",
   "permanecerConectado": true,
   "dataNascimento": "1990-01-01",
   "endereco": {
@@ -10,10 +11,7 @@
     "complemento": "lado ímpar",
     "bairro": "Sé",
     "localidade": "São Paulo",
-    "uf": "SP",
-    "unidade": "",
-    "ibge": "3550308",
-    "gia": "1004"
+    "uf": "SP"
   },
   "token": "faketoken1234567890"
 }

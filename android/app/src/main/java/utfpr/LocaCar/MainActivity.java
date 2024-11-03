@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package utfpr.LocaCar;
 
 import com.getcapacitor.BridgeActivity;
 

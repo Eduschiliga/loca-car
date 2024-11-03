@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoadingService} from "../../../shared/loading/loading.service";
 import {UsuarioStateService} from "../../../services/usuario/state/usuario-state.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit {
     permanecerConectado: false
   };
 
+  private inscricao = new Subscription();
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -41,20 +44,22 @@ export class LoginComponent implements OnInit {
     if (token) {
       const loading = await this.loadingService.showLoading('Autenticando Usuário...');
 
-      this.authService.verificarToken().subscribe({
-        next: (autenticado) => {
-          if (autenticado) {
-            this.router.navigate(['/home']);
+      this.inscricao.add(
+        this.authService.verificarToken().subscribe({
+          next: (autenticado) => {
+            if (autenticado) {
+              this.router.navigate(['/home']);
+            }
+          },
+          error: () => {
+            this.router.navigate(['/login']);
+            loading.dismiss();
+          },
+          complete: () => {
+            loading.dismiss();
           }
-        },
-        error: () => {
-          this.router.navigate(['/login']);
-          loading.dismiss();
-        },
-        complete: () => {
-          loading.dismiss();
-        }
-      });
+        })
+      );
     }
   }
 

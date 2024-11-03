@@ -1,93 +1,18 @@
 <ion-content [fullscreen]="true">
-  <ion-grid fixed class="ion-padding">
-    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100vh;">
-      <form>
-        <ion-col size-md="8" size-lg="4" size-sm="8" size-xs="12" class="ion-padding">
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Nome</ion-label>
-            <ion-input mode="ios" type="text" fill="outline" placeholder="Informe seu nome completo">
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Contato</ion-label>
-            <ion-input mode="ios" type="tel" fill="outline" placeholder="Informe seu telefone">
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Usuário</ion-label>
-            <ion-input mode="ios" type="email" fill="outline" placeholder="Informe um e-mail">
-              <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon>
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Senha</ion-label>
-            <ion-input mode="ios" type="password" fill="outline" placeholder="Informe uma senha">
-              <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Data de nascimento</ion-label>
-            <ion-datetime mode="ios" display-format="DD/MM/YYYY" placeholder="Selecione a data">
-            </ion-datetime>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">CEP</ion-label>
-            <ion-input mode="ios" type="text" fill="outline" placeholder="Informe seu CEP">
-              <ion-text slot="error" color="danger">(Required)</ion-text>
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Cidade</ion-label>
-            <ion-input mode="ios" type="text" fill="outline" placeholder="Informe sua cidade">
-              <ion-text slot="error" color="danger">(Required)</ion-text>
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Estado</ion-label>
-            <ion-select mode="ios" placeholder="Selecione seu estado">
-              <ion-select-option value="SP">São Paulo</ion-select-option>
-              <ion-select-option value="RJ">Rio de Janeiro</ion-select-option>
-              <!-- Adicionar mais opções conforme necessário -->
-            </ion-select>
-            <ion-text slot="error" color="danger">(Required)</ion-text>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">País</ion-label>
-            <ion-input mode="ios" type="text" fill="outline" placeholder="Informe seu país">
-              <ion-text slot="error" color="danger">(Required)</ion-text>
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="ion-margin-bottom">
-            <ion-label mode="ios" position="stacked">Endereço</ion-label>
-            <ion-input mode="ios" type="text" fill="outline" placeholder="Informe seu endereço">
-              <ion-text slot="error" color="danger">(Required)</ion-text>
-            </ion-input>
-          </ion-item>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-margin" style="height: 100vh;">
+      <ion-col size-md="6" size-lg="4" size-xs="12">
+        <form>
+          <app-informacoes-usuario [editar]="true" msgButton="Cadastrar"></app-informacoes-usuario>
 
           <div class="ion-text-center">
-
-            <ion-button expand="block" class="gradient-button ion-margin-top ion-margin-bottom" shape="round">
-              Cadastrar
-              <ion-icon slot="end" name="person-add-outline"></ion-icon>
-            </ion-button>
-
-            <ion-button class="ion-margin-top" expand="block" fill="outline" shape="round" color="secondary" (click)="logarUsuario()">
+            <ion-button class="ion-margin" expand="block" fill="outline" shape="round" color="secondary" (click)="logarUsuario()">
               Login
               <ion-icon slot="end" name="log-in-outline"></ion-icon>
             </ion-button>
           </div>
-        </ion-col>
-      </form>
+        </form>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

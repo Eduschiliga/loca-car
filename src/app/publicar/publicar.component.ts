@@ -12,10 +12,10 @@ import {IonicModule} from "@ionic/angular";
   ],
   standalone: true
 })
-export class PublicarComponent  implements OnInit {
+export class PublicarComponent {
 
   constructor() { }
 
-  ngOnInit() {}
-
+  protected publicar() {
+  }
 }

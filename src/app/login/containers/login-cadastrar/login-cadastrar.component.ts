@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
 import {Router} from "@angular/router";
+import {InformacoesUsuarioComponent} from "../../../perfil/component/informacoes-usuario/informacoes-usuario.component";
 
 @Component({
   selector: 'app-login-cadastrar',
@@ -9,7 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login-cadastrar.component.scss'],
   imports: [
     FormsModule,
-    IonicModule
+    IonicModule,
+    InformacoesUsuarioComponent
   ],
   standalone: true
 })

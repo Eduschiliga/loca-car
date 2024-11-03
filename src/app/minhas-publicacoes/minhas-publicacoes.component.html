@@ -1,1 +1,12 @@
 <app-cabecalho nomePagina="Minhas Publicações"></app-cabecalho>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-toolbar style="border-radius: 8px" class="ion-text-center ion-padding">
+    <ion-title>Sem publicações no momento!</ion-title>
+
+    <ion-button expand="block" class="ion-padding-horizontal stroke-text gradient-button ion-margin-top ion-margin-bottom ion-text-center ion-justify-content-center ion-align-items-center" shape="round" (click)="redirecionarParaPublicao()">
+      Publicar Carro
+      <ion-icon slot="end" name="car-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-content>

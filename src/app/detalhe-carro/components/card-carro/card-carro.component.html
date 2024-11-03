@@ -1,6 +1,7 @@
 <ion-card>
   <div (click)="setOpen(true)" style="cursor: pointer">
-    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%" style="object-fit: fill"/>
+    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%"
+         style="object-fit: fill"/>
     <ion-card-header>
       <ion-card-title>{{ carro.modelo }}</ion-card-title>
       <ion-card-subtitle>{{ carro.marca }}</ion-card-subtitle>
@@ -10,11 +11,44 @@
       {{ carro.descricao }}
     </ion-card-content>
   </div>
+
   <ion-card-content>
-    <ion-button class="ion-justify-content-center ion-align-items-center ion-text-center gradient-button">
-      Demonstrar interesse
-      <ion-icon size="large" name="heart" aria-hidden="true"></ion-icon>
-    </ion-button>
+    @if (demonstrarInteresse) {
+      <ion-button class="ion-justify-content-center ion-align-items-center ion-text-center gradient-button" (click)="demonstrarInteresseCarro()">
+        Demonstrar interesse
+        <ion-icon size="large" name="heart" aria-hidden="true"></ion-icon>
+      </ion-button>
+    }
+
+    @if (conversarComDono || removerInteresse) {
+      <div id="containerButtons">
+        @if (removerInteresse) {
+          <ion-button
+            shape="round"
+            class="ion-justify-content-center ion-align-items-center ion-text-center"
+            (click)="alertRemoverCarroInteresse(carro.id)"
+          >
+            Remover interesse
+          </ion-button>
+        }
+
+        @if (conversarComDono) {
+          <ion-button
+            expand="full"
+            color="success"
+            (click)="presentAlertaSiteExterno(carro.usuario.telefone)"
+            shape="round">
+            <ion-icon size="large" name="logo-whatsapp"></ion-icon>
+            <span
+              text-wrap
+              class="ion-margin-start">
+          <strong>Clique aqui para conversar com o proprietário</strong>
+        </span>
+          </ion-button>
+        }
+      </div>
+    }
+
   </ion-card-content>
 </ion-card>
 
@@ -32,7 +66,8 @@
       <swiper-container [pagination]="{ el: '.swiper-pagination', clickable: true }">
         @for (img of carro.imagens; track img) {
           <swiper-slide>
-            <img src="{{URL_IMG + img}}" alt="Logo" width="100%" height="250px" style="border-radius: 8px" class="shadow-box">
+            <img src="{{URL_IMG + img}}" alt="Logo" width="100%" height="250px" style="border-radius: 8px"
+                 class="shadow-box">
           </swiper-slide>
         }
       </swiper-container>
@@ -54,7 +89,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="pricetag-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="pricetag-outline"></ion-icon>
                         Preço
                       </div>
                       <div class="info-value">{{ carro.preco | currency: 'BRL' }}</div>
@@ -63,7 +98,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="speedometer-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="speedometer-outline"></ion-icon>
                         Quilometragem
                       </div>
                       <div class="info-value">{{ carro.quilometragem | number }} km</div>
@@ -86,7 +121,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="flame-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="flame-outline"></ion-icon>
                         Combustível
                       </div>
                       <div class="info-value">{{ carro.tipoCombustivel }}</div>
@@ -95,7 +130,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="construct-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="construct-outline"></ion-icon>
                         Transmissão
                       </div>
                       <div class="info-value">{{ carro.transmissao }}</div>
@@ -104,7 +139,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="speedometer-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="speedometer-outline"></ion-icon>
                         Motor
                       </div>
                       <div class="info-value">{{ carro.motor.potencia }} CV - {{ carro.motor.cilindrada }}cc
@@ -117,7 +152,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="checkmark-circle-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="checkmark-circle-outline"></ion-icon>
                         Status
                       </div>
                       <div class="info-value">
@@ -142,7 +177,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="location-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="location-outline"></ion-icon>
                         Endereço
                       </div>
                       <div class="info-value">{{ carro.localizacao.endereco }}, {{ carro.localizacao.cidade }}
@@ -167,7 +202,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="information-circle-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="information-circle-outline"></ion-icon>
                         Descrição
                       </div>
                       <div class="info-value">{{ carro.descricao }}</div>
@@ -179,7 +214,7 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="list-circle-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="list-circle-outline"></ion-icon>
                         Características
                       </div>
                       <div class="info-value">
@@ -206,19 +241,19 @@
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="call-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="call-outline"></ion-icon>
                         Telefone
                       </div>
-                      <div class="info-value">{{ carro.usuario.contato?.telefone }}</div>
+                      <div class="info-value">{{ carro.usuario.telefone }}</div>
                     </div>
                   </ion-col>
                   <ion-col size="12">
                     <div class="info-container">
                       <div class="info-label">
-                        <ion-icon class="shadow-box"  size="large" name="mail-outline"></ion-icon>
+                        <ion-icon class="shadow-box" size="large" name="mail-outline"></ion-icon>
                         Email
                       </div>
-                      <div class="info-value">{{ carro.usuario.contato?.email }}</div>
+                      <div class="info-value">{{ carro.usuario.email }}</div>
                     </div>
                   </ion-col>
                 </ion-row>
@@ -226,9 +261,9 @@
 
               <!-- Botão de Contato -->
               <ion-button expand="full" color="success"
-                          (click)="presentAlertaSiteExterno(carro.usuario.contato?.telefone)"
+                          (click)="presentAlertaSiteExterno(carro.usuario.telefone)"
                           class="ion-padding shadow-box" shape="round">
-                <ion-icon  size="large" name="logo-whatsapp"></ion-icon>
+                <ion-icon size="large" name="logo-whatsapp"></ion-icon>
                 <span text-wrap
                       class="ion-margin-start"><strong>Clique aqui para conversar com o proprietário</strong></span>
               </ion-button>

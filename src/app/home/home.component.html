@@ -1,7 +1,9 @@
-<app-cabecalho [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}"
-               (inputPesquisa)="pesquisaModeloMarca($event)">
+<app-cabecalho
+  [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}"
+  (inputPesquisa)="pesquisaModeloMarca($event)"
+  [mostrarInteresse]="true">
 </app-cabecalho>
-               
+
 <ion-content [fullscreen]="true" class="ion-padding">
   @if (loading) {
     <ion-spinner></ion-spinner>
@@ -27,7 +29,6 @@
     @if (!loading && !erroCarregamento) {
       @for (carro of carrosFiltrados; track $index) {
         <app-card-carro [carro]="carro"></app-card-carro>
-
       }
     }
   }

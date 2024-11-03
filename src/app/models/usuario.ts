@@ -1,4 +1,4 @@
-import {Endereco} from "./endereco";
+import { Endereco } from "./endereco";
 
 export interface Usuario {
   nome: string;
@@ -8,9 +8,18 @@ export interface Usuario {
   dataNascimento: string;
   endereco: Endereco;
   token?: string;
-  contato: {
-    telefone: string;
-    email: string;
-  };
+  telefone: string;
 }
 
+export function buildUsuario(): Usuario {
+  return {
+    nome: '',
+    email: '',
+    senha: '',
+    permanecerConectado: false,
+    dataNascimento: '',
+    endereco: { cep: '', logradouro: '', complemento: '', bairro: '', localidade: '', uf: ''},
+    token: '',
+    telefone: ''
+  };
+}

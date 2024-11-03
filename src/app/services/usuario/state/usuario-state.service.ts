@@ -7,7 +7,7 @@ import {Usuario} from "../../../models/usuario";
 })
 export class UsuarioStateService {
   private usuario$ = new BehaviorSubject<Usuario>({
-    contato: {email: "", telefone: ""},
+    telefone: "",
     dataNascimento: "",
     email: "",
     endereco:  {
@@ -17,7 +17,6 @@ export class UsuarioStateService {
       bairro: '',
       localidade: '',
       uf: '',
-      unidade: '',
     },
     nome: "",
     permanecerConectado: false,

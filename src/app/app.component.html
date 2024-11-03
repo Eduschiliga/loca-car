@@ -4,8 +4,8 @@
       <ion-menu contentId="main-content" type="overlay">
         <ion-content fullscreen="false">
           <ion-list id="inbox-list">
-            <ion-list-header>{{usuario?.nome}}</ion-list-header>
-            <ion-note>{{usuario?.email}}</ion-note>
+            <ion-list-header>{{usuario.nome}}</ion-list-header>
+            <ion-note>{{usuario.email}}</ion-note>
 
             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
               <ion-item routerDirection="root" (click)="navegar(p)" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
