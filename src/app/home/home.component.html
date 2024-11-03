@@ -10,9 +10,7 @@
     <div class="error-message">Falha ao carregar carros.</div>
   } @else {
     <ion-toolbar style="border-radius: 8px" class="ion-margin-bottom">
-      <ion-button expand="block"
-                  class="ion-padding-horizontal stroke-text gradient-button ion-margin-top ion-margin-bottom ion-text-center ion-justify-content-center ion-align-items-center"
-                  shape="round">
+      <ion-button expand="block" class="ion-padding-horizontal stroke-text gradient-button ion-margin-top ion-margin-bottom ion-text-center ion-justify-content-center ion-align-items-center" shape="round" (click)="redirecionarParaPublicao()">
         Publicar Carro
         <ion-icon slot="end" name="car-outline"></ion-icon>
       </ion-button>

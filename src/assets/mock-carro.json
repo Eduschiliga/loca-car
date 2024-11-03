@@ -21,8 +21,9 @@
     },
     "status": "Disponível",
     "imagens": [
-      "corola.jpg",
-      "corola2.jpg"
+      "mobi.png",
+      "mobi1.jpg",
+      "mobi2.jpg"
     ],
     "descricao": "Um carro muito confortável e econômico.",
     "caracteristicas": [
@@ -80,10 +81,8 @@
     },
     "status": "Alugado",
     "imagens": [
-      "corola.jpg",
-      "corola.jpg",
-      "corola.jpg",
-      "corola2.jpg"
+      "Chrysler.png",
+      "Chrysler2.png"
     ],
     "descricao": "Carro esportivo com excelente desempenho.",
     "caracteristicas": [

@@ -1,1 +1,137 @@
 <app-cabecalho nomePagina="Publicar Carro"></app-cabecalho>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+
+    <fieldset class="ion-margin" style="border-radius: 5px; padding: 15px;">
+      <legend>Informações do veículo</legend>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Marca</ion-label>
+        <ion-input mode="ios" type="text" fill="outline" placeholder="Informe a marca">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Modelo</ion-label>
+        <ion-input mode="ios" type="text" fill="outline" placeholder="Informe o modelo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Ano</ion-label>
+        <ion-input mode="ios" type="number" fill="outline" placeholder="Informe o ano">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Preço</ion-label>
+        <ion-input mode="ios" type="number" fill="outline" placeholder="Informe o preço">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Quilometragem</ion-label>
+        <ion-input mode="ios" type="number" fill="outline" placeholder="Informe a quilometragem">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Tipo de Combustível</ion-label>
+        <ion-select mode="ios" placeholder="Selecione o tipo de combustível">
+          <ion-select-option value="gasolina">Gasolina</ion-select-option>
+          <ion-select-option value="etanol">Etanol</ion-select-option>
+          <ion-select-option value="diesel">Diesel</ion-select-option>
+          <ion-select-option value="gás natural">Gás Natural</ion-select-option>
+          <!-- Adicionar mais opções conforme necessário -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Transmissão</ion-label>
+        <ion-select mode="ios" placeholder="Selecione a transmissão">
+          <ion-select-option value="manual">Manual</ion-select-option>
+          <ion-select-option value="automatica">Automática</ion-select-option>
+          <!-- Adicionar mais opções conforme necessário -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Cor</ion-label>
+        <ion-input mode="ios" type="text" fill="outline" placeholder="Informe a cor">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Descrição</ion-label>
+        <ion-textarea mode="ios" fill="outline" placeholder="Descreva o veículo">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Características</ion-label>
+        <ion-textarea mode="ios" fill="outline" placeholder="Liste as características">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Potência</ion-label>
+        <ion-input mode="ios" type="number" fill="outline" placeholder="Informe a potência">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Cilindrada</ion-label>
+        <ion-input mode="ios" type="number" fill="outline" placeholder="Informe a cilindrada">
+        </ion-input>
+      </ion-item>
+    </fieldset>
+
+    <fieldset class="ion-margin" style="border-radius: 5px; padding: 15px;">
+      <legend>Localização</legend>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">CEP</ion-label>
+        <ion-input mode="ios" type="text" fill="outline" placeholder="Informe o CEP">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Cidade</ion-label>
+        <ion-input mode="ios" type="text" fill="outline" placeholder="Informe a cidade">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Estado</ion-label>
+        <ion-select mode="ios" placeholder="Selecione o estado">
+          <ion-select-option value="SP">São Paulo</ion-select-option>
+          <ion-select-option value="RJ">Rio de Janeiro</ion-select-option>
+          <!-- Adicionar mais opções conforme necessário -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">País</ion-label>
+        <ion-input mode="ios" type="text" fill="outline" placeholder="Informe o país">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Endereço</ion-label>
+        <ion-textarea mode="ios" fill="outline" placeholder="Informe o endereço">
+        </ion-textarea>
+      </ion-item>
+    </fieldset>
+
+    <fieldset class="ion-margin" style="border-radius: 5px; padding: 15px;">
+      <legend>Imagens</legend>
+      <ion-item class="ion-margin-bottom">
+        <ion-label mode="ios" position="stacked">Selecione imagens</ion-label>
+        <ion-input mode="ios" type="file" accept="image/*">
+        </ion-input>
+      </ion-item>
+    </fieldset>
+
+  </ion-list>
+</ion-content>

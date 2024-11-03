@@ -1,0 +1,61 @@
+ion-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+ion-footer .ion-text-center {
+  margin-top: 10px;
+}
+
+.gradient-button {
+  --background: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  --background-activated: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  --background-focused: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  --background-disabled: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(255,154,59,1) 50%, rgba(255,87,34,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.locacar-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra do título */
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.stroke-text {
+  color: white; /* Cor do texto Loca */
+  -webkit-text-stroke: 1px black; /* Contorno preto ao redor do texto */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra adicional */
+}
+
+
+ion-item.md {
+  --background: transparent;
+}
+
+ion-input.md, ion-checkbox.md {
+  --background: transparent;
+}
+
+/* Estilos para a logo */
+.logo-image {
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+ion-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

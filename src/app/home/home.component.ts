@@ -9,7 +9,7 @@ import {CarroApiService} from "../services/carro/api/carro-api.service";
 import {Carro} from "../models/carro";
 import {FormsModule} from "@angular/forms";
 import {CardCarroComponent} from "../detalhe-carro/components/card-carro/card-carro.component";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 
 @Component({
@@ -39,13 +39,18 @@ export class HomeComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private carroState: CarroStateService,
-    private carroService: CarroApiService
+    private carroService: CarroApiService,
+    private router: Router,
   ) {
     this.inscreverStateCarro();
   }
 
   ngOnInit(): void {
     this.buscarTodosCarros();
+  }
+
+  protected redirecionarParaPublicao() {
+    this.router.navigate(['publicar']);
   }
 
   private inscreverStateCarro() {
