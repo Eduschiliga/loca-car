@@ -38,6 +38,12 @@ export const routes: Routes = [
     canLoad: [authGuardCanLoad],
   },
   {
+    path: 'sobre',
+    loadChildren: () => import('./sobre/sobre.route').then((r) => r.SOBRE_ROUTES),
+    canActivate: [authGuard],
+    canLoad: [authGuardCanLoad],
+  },
+  {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.route').then(m => m.folderRoutes),
     canActivate: [authGuard],

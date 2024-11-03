@@ -1,6 +1,7 @@
-<app-cabecalho nomePagina="Home" [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}"
-               (inputPesquisa)="pesquisaModeloMarca($event)"></app-cabecalho>
-
+<app-cabecalho [barraPesquisa]="{mostrar: true, placeholder: 'Digite aqui marca ou modelo'}"
+               (inputPesquisa)="pesquisaModeloMarca($event)">
+</app-cabecalho>
+               
 <ion-content [fullscreen]="true" class="ion-padding">
   @if (loading) {
     <ion-spinner></ion-spinner>

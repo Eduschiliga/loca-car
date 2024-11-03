@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="true"></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ nomePagina }}</ion-title>
+    <ion-router-link routerLink="src/app/home" class="clickable-logo">
+      <img src="assets/logo-bogacar.png" alt="Logo BogaCar" style="height: 30px; width: auto; margin-left: 80px;"/>
+    </ion-router-link>
   </ion-toolbar>
 
   @if (barraPesquisa.mostrar) {

@@ -30,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { title: 'Minhas publicações', url: '/publicacoesUsuario', icon: 'bookmarks' },
     { title: 'Perfil', url: '/perfil', icon: 'person' },
     { title: 'Configurações', url: '/configuracoes', icon: 'cog' },
+    { title: 'Sobre', url: '/sobre', icon: 'ellipsis-horizontal' },
     { title: 'Sair', url: '', icon: 'chevron-back-circle', action: 'sair' },
   ];
 
