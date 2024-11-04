@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicModule, LoadingController} from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 import {Usuario} from '../../../models/usuario';
 import {AuthService} from '../../../services/auth/auth.service';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoadingService} from "../../../shared/loading/loading.service";
-import {UsuarioStateService} from "../../../services/usuario/state/usuario-state.service";
 import {Subscription} from "rxjs";
 
 @Component({
