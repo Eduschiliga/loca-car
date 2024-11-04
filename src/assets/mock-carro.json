@@ -21,9 +21,8 @@
     },
     "status": "Disponível",
     "imagens": [
-      "mobi.png",
-      "mobi1.jpg",
-      "mobi2.jpg"
+      "corola.jpg",
+      "corola2.jpg"
     ],
     "descricao": "Um carro muito confortável e econômico.",
     "caracteristicas": [
@@ -81,8 +80,8 @@
     },
     "status": "Alugado",
     "imagens": [
-      "Chrysler.png",
-      "Chrysler2.png"
+      "civic.jpg",
+      "civicinterior.jpeg"
     ],
     "descricao": "Carro esportivo com excelente desempenho.",
     "caracteristicas": [
@@ -140,10 +139,7 @@
     },
     "status": "Vendido",
     "imagens": [
-      "corola.jpg",
-      "corola2.jpg",
-      "corola2.jpg",
-      "corola2.jpg"
+      "fiesta.jpg"
     ],
     "descricao": "Compacto e econômico, ideal para a cidade.",
     "caracteristicas": [
@@ -174,5 +170,123 @@
   ,
     "dataCriacao": "2023-08-20T00:00:00Z",
     "dataAtualizacao": "2023-08-20T00:00:00Z"
+  },
+  {
+    "id": 4,
+    "marca": "Chrysler",
+    "modelo": "300C",
+    "ano": 2021,
+    "preco": 150000,
+    "quilometragem": 12000,
+    "tipoCombustivel": "Gasolina",
+    "transmissao": "Automática",
+    "cor": "Prata",
+    "localizacao": {
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "pais": "Brasil",
+      "endereco": "Avenida Exemplo, 456"
+    },
+    "motor": {
+      "potencia": 292,
+      "cilindrada": 3604
+    },
+    "status": "Disponível",
+    "imagens": [
+      "Chrysler.png",
+      "Chrysler2.png"
+    ],
+    "descricao": "Luxuoso e potente, ideal para quem procura conforto e sofisticação.",
+    "caracteristicas": [
+      "Ar-condicionado dual zone",
+      "Airbag",
+      "ABS",
+      "Controle de tração",
+      "Banco de couro"
+    ],
+    "usuario": {
+      "nome": "Carlos Alberto",
+      "email": "carlos.alberto@email.com",
+      "senha": "admin",
+      "contato": {
+        "telefone": "21987654321",
+        "email": "carlos.contato@email.com"
+      },
+      "permanecerConectado": true,
+      "dataNascimento": "1985-05-15",
+      "endereco": {
+        "cep": "20031-170",
+        "logradouro": "Avenida Rio Branco",
+        "complemento": "sala 101",
+        "bairro": "Centro",
+        "localidade": "Rio de Janeiro",
+        "uf": "RJ",
+        "unidade": "",
+        "ibge": "3304557",
+        "gia": "N/A"
+      },
+      "token": "faketoken9876543210"
+    },
+    "dataCriacao": "2023-11-01T00:00:00Z",
+    "dataAtualizacao": "2023-11-01T00:00:00Z"
+  },
+  {
+    "id": 5,
+    "marca": "Fiat",
+    "modelo": "Mobi",
+    "ano": 2020,
+    "preco": 45000,
+    "quilometragem": 15000,
+    "tipoCombustivel": "Flex",
+    "transmissao": "Manual",
+    "cor": "Branco",
+    "localizacao": {
+      "cidade": "Curitiba",
+      "estado": "PR",
+      "pais": "Brasil",
+      "endereco": "Rua dos Exemplos, 789"
+    },
+    "motor": {
+      "potencia": 75,
+      "cilindrada": 999
+    },
+    "status": "Disponível",
+    "imagens": [
+      "mobi.png",
+      "mobi1.jpg",
+      "mobi2.jpg"
+    ],
+    "descricao": "Compacto, econômico e ideal para o dia a dia na cidade.",
+    "caracteristicas": [
+      "Ar-condicionado",
+      "Direção hidráulica",
+      "Vidros elétricos",
+      "Travas elétricas"
+    ],
+    "usuario": {
+      "nome": "Maria Oliveira",
+      "email": "maria.oliveira@email.com",
+      "senha": "admin",
+      "contato": {
+        "telefone": "41987654321",
+        "email": "maria.contato@email.com"
+      },
+      "permanecerConectado": true,
+      "dataNascimento": "1992-08-20",
+      "endereco": {
+        "cep": "80010-150",
+        "logradouro": "Rua XV de Novembro",
+        "complemento": "apartamento 203",
+        "bairro": "Centro",
+        "localidade": "Curitiba",
+        "uf": "PR",
+        "unidade": "",
+        "ibge": "4106902",
+        "gia": "N/A"
+      },
+      "token": "faketoken5678901234"
+    },
+    "dataCriacao": "2023-09-15T00:00:00Z",
+    "dataAtualizacao": "2023-09-15T00:00:00Z"
   }
 ]
