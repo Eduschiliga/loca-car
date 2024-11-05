@@ -10,8 +10,9 @@ Baixe e instale o Node.js: Confira a página oficial de download do Node para ob
 Clone o repositório do projeto: git clone <repository_url>.  
 Navegue até o diretório do projeto e realize a instalação das dependências: npm i.  
 Realize o build usando npm build.  
-Instale o apk fornecida em seu dispositivo móvel para acessar o aplicativo.  
-Colaboradores:
-Eduardo Schiliga
-Marcos Artêmio Gomes dos Santos
-Kauê Ruppel Q. Da Silva
+Instale o apk fornecida em seu dispositivo móvel para acessar o aplicativo.
+  
+Colaboradores:  
+Eduardo Schiliga. 
+Marcos Artêmio Gomes dos Santos. 
+Kauê Ruppel Q. Da Silva. 
