@@ -14,5 +14,5 @@ Instale o apk fornecida em seu dispositivo móvel para acessar o aplicativo.
   
 Colaboradores:  
 Eduardo Schiliga.  
-Marcos Artêmio Gomes dos Santos. 
+Marcos Artêmio Gomes dos Santos.  
 Kauê Ruppel Q. Da Silva. 
