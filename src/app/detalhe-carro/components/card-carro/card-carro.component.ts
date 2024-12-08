@@ -1,4 +1,4 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnDestroy} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {AlertController, IonicModule} from "@ionic/angular";
 import {Browser} from "@capacitor/browser";
 import {Carro} from "../../../models/carro";
@@ -9,6 +9,7 @@ import {CurrencyPipe, DecimalPipe} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {UtilsService} from "../../../utils/utils.service";
 import {Subscription} from "rxjs";
+import {AuthService} from "../../../services/auth/auth.service";
 
 register();
 
@@ -30,9 +31,13 @@ export class CardCarroComponent implements OnDestroy {
   @Input() conversarComDono: boolean = false;
   @Input() removerInteresse: boolean = false;
 
+  protected usuarioId: number | undefined = undefined;
+
   private inscricao = new Subscription();
   protected isModalOpen = false;
   protected URL_IMG = 'assets/';
+  @Output() editar = new EventEmitter();
+  @Output() remover = new EventEmitter();
 
   public swiper!: Swiper;
 
@@ -40,7 +45,17 @@ export class CardCarroComponent implements OnDestroy {
     public alertCtrl: AlertController,
     private http: HttpClient,
     private utils: UtilsService,
+    private auth: AuthService,
   ) {
+    this.usuarioId = this.auth.usuario.id;
+  }
+
+  protected evtEditar() {
+    this.editar.emit(this.carro.id);
+  }
+
+  protected evtRemover() {
+    this.remover.emit(this.carro.id);
   }
 
   setOpen(isOpen: boolean) {

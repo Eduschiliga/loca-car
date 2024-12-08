@@ -9,4 +9,9 @@
       <ion-icon slot="end" name="car-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
+
+  @for (carro of carros; track $index) {
+    <app-card-carro (editar)="editar($event)" (remover)="remover($event)" [carro]="carro"></app-card-carro>
+  }
+
 </ion-content>

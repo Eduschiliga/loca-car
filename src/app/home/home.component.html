@@ -28,7 +28,7 @@
 
     @if (!loading && !erroCarregamento) {
       @for (carro of carrosFiltrados; track $index) {
-        <app-card-carro [carro]="carro"></app-card-carro>
+        <app-card-carro (editar)="editar($event)" (remover)="remover($event)" [carro]="carro"></app-card-carro>
       }
     }
   }

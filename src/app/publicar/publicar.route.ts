@@ -5,5 +5,9 @@ export const PUBLICAR_ROUTE: Routes = [
   {
     path: '',
     component: PublicarComponent,
+  },
+  {
+    path: 'editar/:id',
+    component: PublicarComponent,
   }
 ];

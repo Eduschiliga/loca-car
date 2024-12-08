@@ -44,23 +44,42 @@
           <ion-input [(ngModel)]="formCarro.potencia" fill="outline" label="Potência" labelPlacement="stacked" name="potencia" type="number" placeholder="Informe a potência"></ion-input>
 
 
-        <ion-item style="width: 100%;">
-          <input
-            type="file"
-            (change)="onFileSelected($event)"
-            accept="image/*"
-            multiple
-            hidden
-            #fileInput>
+        <div class="ion-padding">
+          <div style="width: 100%; border: 2px dashed #5c5c5c; border-radius: 8px; margin-top: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              multiple
+              hidden
+              #fileInput>
 
-          <ion-button
-            expand="block"
-            fill="outline"
-            (click)="fileInput.click()">
-            Selecionar Imagens
-            <ion-icon name="images-outline" slot="start"></ion-icon>
-          </ion-button>
-        </ion-item>
+            <ion-button
+              class="ion-padding"
+              expand="block"
+              fill="outline"
+              (click)="fileInput.click()">
+              Selecionar Imagem
+              <ion-icon name="images-outline" slot="start"></ion-icon>
+            </ion-button>
+
+            @if ( selectFile) {
+              <div class="ion-padding ion-flex-column ion-align-items-center ion-text-center ion-justify-content-center">
+                <p>Imagem selecionada:</p>
+                <div>
+                  <p>{{selectFile?.name}}</p>
+                  <ion-button
+                    expand="block"
+                    fill="outline"
+                    (click)="removerImagem()"
+                  >
+                    Remover imagem
+                  </ion-button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
       </ion-item-group>
     </ion-list>
 

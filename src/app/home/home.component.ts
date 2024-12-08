@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IonicModule} from "@ionic/angular";
+import {AlertController, IonicModule} from "@ionic/angular";
 import {CabecalhoComponent} from "../shared/cabecalho/cabecalho.component";
 import {CommonModule} from "@angular/common";
 import {CarroStateService} from "../services/carro/state/carro-state.service";
@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {CardCarroComponent} from "../detalhe-carro/components/card-carro/card-carro.component";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {UtilsService} from "../utils/utils.service";
 
 
 @Component({
@@ -38,6 +39,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private carroState: CarroStateService,
     private carroService: CarroApiService,
     private router: Router,
+    private utils: UtilsService,
+    private alertController: AlertController
   ) {
     this.inscreverStateCarro();
   }
@@ -115,6 +118,51 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       )
     );
+
+  }
+
+  editar(event: number) {
+    this.router.navigate(['/publicar/editar', event]);
+  }
+
+  async remover(event: number) {
+    const alert = await this.alertController.create({
+      header: "Atenção",
+      message:
+        "Deseja realmente excluir esta publicação?",
+      buttons: [
+        {
+          text: "Cancelar",
+          role: "cancel",
+        },
+        {
+          text: "OK",
+          role: "confirm",
+          handler: () => {
+            this.inscricao.add(
+              this.carroService.deletar(event).subscribe(
+                {
+                  next: () => {
+                    this.utils.presentToast('bottom', 'Carro deletado com sucesso! ').then();
+
+                    let temp = this.carros.filter((carro: Carro) => {
+                      return carro.id != event;
+                    })
+
+                    this.carroState.setCarrosLista(temp);
+                  },
+                  error: (err) => {
+                    this.utils.presentToast('bottom', 'Erro ao deletar o carro! ' + err.getMessage()).then();
+                  }
+                }
+              )
+            );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
 
   }
 

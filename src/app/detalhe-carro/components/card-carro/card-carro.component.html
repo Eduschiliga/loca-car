@@ -1,15 +1,28 @@
 <ion-card>
-  <div (click)="setOpen(true)" style="cursor: pointer">
-    <!--    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%"-->
-    style="object-fit: fill"/>
-    <ion-card-header>
-      <ion-card-title>{{ carro.modelo }}</ion-card-title>
-      <ion-card-subtitle>{{ carro.marca }}</ion-card-subtitle>
-    </ion-card-header>
+  <div style="cursor: pointer">
+    <div (click)="setOpen(true)">
+      <!--    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%"-->
+      <!--    style="object-fit: fill"/>-->
 
-    <ion-card-content>
-      {{ carro.descricao }}
-    </ion-card-content>
+      <ion-card-header>
+        <ion-card-title>{{ carro.modelo }}</ion-card-title>
+        <ion-card-subtitle>{{ carro.marca }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ carro.descricao }}
+      </ion-card-content>
+    </div>
+
+    @if (this.usuarioId === carro.usuario?.id) {
+      <ion-button expand="full" color="danger" shape="round" (click)="evtRemover()" class="ion-margin-top ion-margin-bottom">
+        <span text-wrap class="ion-margin-start"><strong>Excluir</strong></span>
+      </ion-button>
+
+      <ion-button expand="full" color="secondary" shape="round" (click)="evtEditar()">
+        <span text-wrap class="ion-margin-start"><strong>Editar</strong></span>
+      </ion-button>
+    }
   </div>
 
   <ion-card-content>

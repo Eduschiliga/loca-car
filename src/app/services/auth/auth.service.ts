@@ -31,6 +31,7 @@ export class AuthService {
     this.usuarioService.loginUsuario(usuario.email!, usuario.senha!).subscribe({
       next: async (dadosUsuario: any | null) => {
         if (dadosUsuario) {
+          this.usuario = dadosUsuario?.usuario.id;
           this.usuario = dadosUsuario?.usuario;
           this.usuario.token = dadosUsuario.token;
 
