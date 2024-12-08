@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "utfpr.LocaCar"
+    namespace "com.utfpr.locacar"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "utfpr.LocaCar"
+        applicationId "com.utfpr.locacar"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

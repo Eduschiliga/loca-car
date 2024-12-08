@@ -1,7 +1,7 @@
 <ion-card>
   <div (click)="setOpen(true)" style="cursor: pointer">
-    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%"
-         style="object-fit: fill"/>
+    <!--    <img alt="Silhouette of mountains" [src]="URL_IMG + carro.imagens[0]" height="200px" width="100%"-->
+    style="object-fit: fill"/>
     <ion-card-header>
       <ion-card-title>{{ carro.modelo }}</ion-card-title>
       <ion-card-subtitle>{{ carro.marca }}</ion-card-subtitle>
@@ -13,30 +13,14 @@
   </div>
 
   <ion-card-content>
-    @if (demonstrarInteresse) {
-      <ion-button class="ion-justify-content-center ion-align-items-center ion-text-center gradient-button" (click)="demonstrarInteresseCarro()">
-        Demonstrar interesse
-        <ion-icon size="large" name="heart" aria-hidden="true"></ion-icon>
-      </ion-button>
-    }
 
-    @if (conversarComDono || removerInteresse) {
+    @if (conversarComDono) {
       <div id="containerButtons">
-        @if (removerInteresse) {
-          <ion-button
-            shape="round"
-            class="ion-justify-content-center ion-align-items-center ion-text-center"
-            (click)="alertRemoverCarroInteresse(carro.id)"
-          >
-            Remover interesse
-          </ion-button>
-        }
-
         @if (conversarComDono) {
           <ion-button
             expand="full"
             color="success"
-            (click)="presentAlertaSiteExterno(carro.usuario.telefone)"
+            (click)="presentAlertaSiteExterno(carro.usuario?.telefone)"
             shape="round">
             <ion-icon size="large" name="logo-whatsapp"></ion-icon>
             <span
@@ -63,14 +47,14 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <swiper-container [pagination]="{ el: '.swiper-pagination', clickable: true }">
-        @for (img of carro.imagens; track img) {
-          <swiper-slide>
-            <img src="{{URL_IMG + img}}" alt="Logo" width="100%" height="250px" style="border-radius: 8px"
-                 class="shadow-box">
-          </swiper-slide>
-        }
-      </swiper-container>
+      <!--      <swiper-container [pagination]="{ el: '.swiper-pagination', clickable: true }">-->
+      <!--        @for (img of carro.imagens; track img) {-->
+      <!--          <swiper-slide>-->
+      <!--            <img src="{{URL_IMG + img}}" alt="Logo" width="100%" height="250px" style="border-radius: 8px"-->
+      <!--                 class="shadow-box">-->
+      <!--          </swiper-slide>-->
+      <!--        }-->
+      <!--      </swiper-container>-->
 
       <section class="ion-padding">
         <div class="titulo">
@@ -142,8 +126,7 @@
                         <ion-icon class="shadow-box" size="large" name="speedometer-outline"></ion-icon>
                         Motor
                       </div>
-                      <div class="info-value">{{ carro.motor.potencia }} CV - {{ carro.motor.cilindrada }}cc
-                      </div>
+                      <div class="info-value">{{ carro.potencia }} CV</div>
                     </div>
                   </ion-col>
                 </ion-row>
@@ -157,31 +140,6 @@
                       </div>
                       <div class="info-value">
                         <ion-chip class="ion-padding shadow-box">{{ carro.status }}</ion-chip>
-                      </div>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-col>
-          </ion-row>
-
-          <!-- Localização -->
-          <ion-row>
-            <ion-col size="12" size-md="6">
-              <ion-label color="primary">
-                <h2><strong>Localização</strong></h2>
-              </ion-label>
-              <ion-grid class="ion-no-padding">
-                <!-- Endereço -->
-                <ion-row>
-                  <ion-col size="12">
-                    <div class="info-container">
-                      <div class="info-label">
-                        <ion-icon class="shadow-box" size="large" name="location-outline"></ion-icon>
-                        Endereço
-                      </div>
-                      <div class="info-value">{{ carro.localizacao.endereco }}, {{ carro.localizacao.cidade }}
-                        , {{ carro.localizacao.estado }}, {{ carro.localizacao.pais }}
                       </div>
                     </div>
                   </ion-col>
@@ -209,22 +167,6 @@
                     </div>
                   </ion-col>
                 </ion-row>
-                <!-- Características -->
-                <ion-row>
-                  <ion-col size="12">
-                    <div class="info-container">
-                      <div class="info-label">
-                        <ion-icon class="shadow-box" size="large" name="list-circle-outline"></ion-icon>
-                        Características
-                      </div>
-                      <div class="info-value">
-                        @for (item of carro.caracteristicas; track $index) {
-                          <ion-chip class="ion-padding shadow-box">{{ item }}</ion-chip>
-                        }
-                      </div>
-                    </div>
-                  </ion-col>
-                </ion-row>
               </ion-grid>
             </ion-col>
           </ion-row>
@@ -244,7 +186,7 @@
                         <ion-icon class="shadow-box" size="large" name="call-outline"></ion-icon>
                         Telefone
                       </div>
-                      <div class="info-value">{{ carro.usuario.telefone }}</div>
+                      <div class="info-value">{{ carro.usuario?.telefone }}</div>
                     </div>
                   </ion-col>
                   <ion-col size="12">
@@ -253,7 +195,7 @@
                         <ion-icon class="shadow-box" size="large" name="mail-outline"></ion-icon>
                         Email
                       </div>
-                      <div class="info-value">{{ carro.usuario.email }}</div>
+                      <div class="info-value">{{ carro.usuario?.email }}</div>
                     </div>
                   </ion-col>
                 </ion-row>
@@ -261,7 +203,7 @@
 
               <!-- Botão de Contato -->
               <ion-button expand="full" color="success"
-                          (click)="presentAlertaSiteExterno(carro.usuario.telefone)"
+                          (click)="presentAlertaSiteExterno(carro.usuario?.telefone)"
                           class="ion-padding shadow-box" shape="round">
                 <ion-icon size="large" name="logo-whatsapp"></ion-icon>
                 <span text-wrap

@@ -1,160 +1,90 @@
-
-<ion-list class="ion-no-margin" lines="none">
+<ion-list class="ion-no-margin ion-no-padding" lines="none">
   <ion-item-group>
-    <br>
     <ion-item-divider class="gradient-button">
-      <ion-label>Informações pessoais</ion-label>
+      <ion-label>Informações pessoais e Contato</ion-label>
     </ion-item-divider>
 
     <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Nome" labelPlacement="stacked" placeholder="Enter text" value="{{ usuario.nome }}"></ion-input>
-
+      <ion-input fill="outline" [(ngModel)]="usuario.nome" [disabled]="!editar" label="Nome" labelPlacement="stacked" placeholder="Nome" value="{{ usuario.nome }}"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Data de nascimento" labelPlacement="stacked" placeholder="Enter text" value="{{ usuario.dataNascimento }}"></ion-input>
-    </ion-item>
-  </ion-item-group>
-
-  <ion-item-group>
-    <br>
-    <ion-item-divider class="gradient-button">
-      <ion-label>Contato</ion-label>
-    </ion-item-divider>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="E-mail" type="email" labelPlacement="stacked" placeholder="E-mail" value="{{ usuario.email }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Data de nascimento" labelPlacement="stacked" placeholder="Telefone" type="date" value="{{ usuario.telefone | date: 'yyyy-MM-dd'}}"></ion-input>
-    </ion-item>
-  </ion-item-group>
-
-  <ion-item-group>
-    <br>
-    <ion-item-divider class="gradient-button">
-      <ion-label>Endereço</ion-label>
-    </ion-item-divider>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="CEP" labelPlacement="stacked" placeholder="stacked" value="{{ usuario.endereco.cep }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Logradouro" labelPlacement="stacked" placeholder="stacked" value="{{ usuario.endereco.logradouro }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Complemento" labelPlacement="stacked" placeholder="stacked" value="{{ usuario.endereco.complemento }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Bairro" labelPlacement="stacked" placeholder="stacked" value="{{ usuario.endereco.bairro }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input fill="outline" [disabled]="!editar" label="Localidade" labelPlacement="stacked" placeholder="stacked" value="{{ usuario.endereco.localidade }}"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-select
-        fill="outline"
-        label="UF"
-        [disabled]="!editar"
-        placeholder="Selecione um estado"
-        [(ngModel)]="usuario.endereco.uf">
-        <ion-select-option value="AC">Acre (AC)</ion-select-option>
-        <ion-select-option value="AL">Alagoas (AL)</ion-select-option>
-        <ion-select-option value="AP">Amapá (AP)</ion-select-option>
-        <ion-select-option value="AM">Amazonas (AM)</ion-select-option>
-        <ion-select-option value="BA">Bahia (BA)</ion-select-option>
-        <ion-select-option value="CE">Ceará (CE)</ion-select-option>
-        <ion-select-option value="DF">Distrito Federal (DF)</ion-select-option>
-        <ion-select-option value="ES">Espírito Santo (ES)</ion-select-option>
-        <ion-select-option value="GO">Goiás (GO)</ion-select-option>
-        <ion-select-option value="MA">Maranhão (MA)</ion-select-option>
-        <ion-select-option value="MT">Mato Grosso (MT)</ion-select-option>
-        <ion-select-option value="MS">Mato Grosso do Sul (MS)</ion-select-option>
-        <ion-select-option value="MG">Minas Gerais (MG)</ion-select-option>
-        <ion-select-option value="PA">Pará (PA)</ion-select-option>
-        <ion-select-option value="PB">Paraíba (PB)</ion-select-option>
-        <ion-select-option value="PR">Paraná (PR)</ion-select-option>
-        <ion-select-option value="PE">Pernambuco (PE)</ion-select-option>
-        <ion-select-option value="PI">Piauí (PI)</ion-select-option>
-        <ion-select-option value="RJ">Rio de Janeiro (RJ)</ion-select-option>
-        <ion-select-option value="RN">Rio Grande do Norte (RN)</ion-select-option>
-        <ion-select-option value="RS">Rio Grande do Sul (RS)</ion-select-option>
-        <ion-select-option value="RO">Rondônia (RO)</ion-select-option>
-        <ion-select-option value="RR">Roraima (RR)</ion-select-option>
-        <ion-select-option value="SC">Santa Catarina (SC)</ion-select-option>
-        <ion-select-option value="SP">São Paulo (SP)</ion-select-option>
-        <ion-select-option value="SE">Sergipe (SE)</ion-select-option>
-        <ion-select-option value="TO">Tocantins (TO)</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <div class="ion-text-center" *ngIf="atualizar">
-      <p class="info-text">Deseja alterar a sua senha de acesso?</p>
-      <ion-button fill="outline" class="ion-margin" expand="block" shape="round" (click)="setOpen(true)">
-        Alterar senha
-        <ion-icon slot="end" name="checkmark-outline"></ion-icon>
-      </ion-button>
-    </div>
-
-    <ion-modal [isOpen]="isModalOpen">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Atualizar Senha</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="setOpen(false)">Fechar</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          <form>
-            <ion-label position="stacked">Senha atual</ion-label>
-            <ion-input  type="password" fill="outline" placeholder="Informe a sua senha" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}">
-              <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-            </ion-input>
-
-            <ion-label  position="stacked">Nova Senha</ion-label>
-            <ion-input  type="password" fill="outline" placeholder="Informe a sua senha">
-              <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-            </ion-input>
-
-            <ion-label  position="stacked">Confirme a sua nova senha</ion-label>
-            <ion-input  type="password" fill="outline" placeholder="Informe a sua senha">
-              <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
-            </ion-input>
-          </form>
-
-          <ion-text>
-            <ion-label>Por questões de seguraça, a senha deve seguir os critérios abaixo:</ion-label>
-            <ul>
-              <li>Deve conter no mínimo 8 caracteres;</li>
-              <li>Deve conter ao menos um dos seguintes caracteres: <br> !#$()|*+,-/:;?_</li>
-              <li>Deve conter ao menos um letra maiúscula e minúscula;</li>
-              <li>Deve conter ao menos um número;</li>
-              <li>Os números não podem ser repetidos ou em sequência;</li>
-            </ul>
-          </ion-text>
-
-          <ion-button expand="block" class="gradient-button ion-margin" shape="round" (click)="salvar()">
-            Salvar senha
-            <ion-icon slot="end" name="checkmark-outline"></ion-icon>
-          </ion-button>
-        </ion-content>
-      </ng-template>
-    </ion-modal>
-
-
-    @if (editar) {
-      <ion-button expand="block" class="gradient-button ion-margin" shape="round" (click)="salvar()">
-        {{msgButton}}
-        <ion-icon slot="end" name="checkmark-outline"></ion-icon>
-      </ion-button>
+    @if (acao === 'cadastrar') {
+      <ion-item>
+        <ion-input fill="outline" [(ngModel)]="usuario.senha" [disabled]="!editar" label="Senha" labelPlacement="stacked" placeholder="Senha" value="{{ usuario.senha }}"></ion-input>
+      </ion-item>
     }
+
+    <ion-item>
+      <ion-input fill="outline" [(ngModel)]="usuario.email" [disabled]="!editar" label="E-mail" type="email" labelPlacement="stacked" placeholder="E-mail" value="{{ usuario.email }}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input fill="outline" [(ngModel)]="usuario.telefone" [disabled]="!editar" label="Telefone" type="number" labelPlacement="stacked" placeholder="Telefone" value="{{ usuario.telefone }}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input fill="outline" [(ngModel)]="usuario.dataNascimento" [disabled]="!editar" label="Data de nascimento" labelPlacement="stacked" placeholder="Data de nascimento" type="date" value="{{ usuario.dataNascimento | date: 'yyyy-MM-dd'}}"></ion-input>
+    </ion-item>
   </ion-item-group>
+
+    <ion-item-group>
+      <br>
+      <div class="ion-text-center" *ngIf="atualizar">
+        <p class="info-text">Deseja alterar a sua senha de acesso?</p>
+        <ion-button fill="outline" class="ion-margin" expand="block" shape="round" (click)="setOpen(true)">
+          Alterar senha
+          <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-modal   [isOpen]="isModalOpen">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-title>Atualizar Senha</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen(false)">Fechar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <form>
+              <ion-label position="stacked">Senha atual</ion-label>
+              <ion-input  type="password" fill="outline" placeholder="Informe a sua senha" [(ngModel)]="senhaAntiga" [ngModelOptions]="{standalone: true}">
+                <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+              </ion-input>
+
+              <ion-label  position="stacked">Nova Senha</ion-label>
+              <ion-input  type="password" fill="outline" placeholder="Informe a sua nova senha" [(ngModel)]="senhaNova" [ngModelOptions]="{standalone: true}">
+                <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+              </ion-input>
+            </form>
+
+            <ion-text>
+              <ion-label>Por questões de seguraça, a senha deve seguir os critérios abaixo:</ion-label>
+              <ul>
+                <li>Deve conter no mínimo 8 caracteres;</li>
+                <li>Deve conter ao menos um dos seguintes caracteres: <br> !#$()|*+,-/:;?_</li>
+                <li>Deve conter ao menos um letra maiúscula e minúscula;</li>
+                <li>Deve conter ao menos um número;</li>
+                <li>Os números não podem ser repetidos ou em sequência;</li>
+              </ul>
+            </ion-text>
+
+            <ion-button expand="block" class="gradient-button ion-margin" shape="round" (click)="alterarSenha()">
+              Salvar senha
+              <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+            </ion-button>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+
+      @if (editar) {
+        <ion-button expand="block" class="gradient-button ion-margin" shape="round" (click)="salvar()">
+          {{msgButton}}
+          <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      }
+    </ion-item-group>
 </ion-list>

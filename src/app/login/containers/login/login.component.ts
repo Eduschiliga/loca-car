@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicModule, LoadingController} from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 import {Usuario} from '../../../models/usuario';
 import {AuthService} from '../../../services/auth/auth.service';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoadingService} from "../../../shared/loading/loading.service";
-import {UsuarioStateService} from "../../../services/usuario/state/usuario-state.service";
 import {Subscription} from "rxjs";
+import {Firestore} from "@angular/fire/firestore";
+import {FirebaseService} from "../../../services/firebase/firebase.service";
 
 @Component({
   selector: 'app-login',
@@ -31,27 +32,27 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private loadingService: LoadingService,
+    private firebaseService: FirebaseService,
   ) {
   }
 
   ngOnInit() {
-    this.verificarUsuarioAutenticadoComToken();
+    this.verificarUsuarioAutenticadoComToken().then();
   }
 
   private async verificarUsuarioAutenticadoComToken() {
-    const token = this.authService.obterToken();
-
-    if (token) {
+    if (this.firebaseService.idFirebase) {
       const loading = await this.loadingService.showLoading('Autenticando Usuário...');
 
       this.inscricao.add(
-        this.authService.verificarToken().subscribe({
+        (await this.authService.verificarToken()).subscribe({
           next: (autenticado) => {
             if (autenticado) {
               this.router.navigate(['/home']);
             }
           },
           error: () => {
+
             this.router.navigate(['/login']);
             loading.dismiss();
           },

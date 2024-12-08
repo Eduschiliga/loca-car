@@ -4,12 +4,9 @@ import {Browser} from "@capacitor/browser";
 import {Carro} from "../../../models/carro";
 import {Swiper} from "swiper";
 import {register} from "swiper/element/bundle";
-import {alert, car, link} from "ionicons/icons";
-import {CurrencyPipe, DecimalPipe, JsonPipe, NgForOf} from "@angular/common";
+import {car} from "ionicons/icons";
+import {CurrencyPipe, DecimalPipe} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
-import {InteresseApiService} from "../../../services/interesse/api/interesse-api.service";
-import {InteresseStateService} from "../../../services/interesse/state/interesse-state.service";
-import {Interesse} from "../../../services/interesse/model/interesse";
 import {UtilsService} from "../../../utils/utils.service";
 import {Subscription} from "rxjs";
 
@@ -21,10 +18,8 @@ register();
   styleUrls: ['./card-carro.component.scss'],
   imports: [
     IonicModule,
-    JsonPipe,
     CurrencyPipe,
-    DecimalPipe,
-    NgForOf
+    DecimalPipe
   ],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -45,8 +40,6 @@ export class CardCarroComponent implements OnDestroy {
     public alertCtrl: AlertController,
     private http: HttpClient,
     private utils: UtilsService,
-    private interesseApi: InteresseApiService,
-    private interesseState: InteresseStateService,
   ) {
   }
 
@@ -61,85 +54,6 @@ export class CardCarroComponent implements OnDestroy {
       buttons: ["Ok"],
     });
     await alert.present();
-  }
-
-  protected demonstrarInteresseCarro() {
-    this.inscricao.add(
-      this.interesseApi.adicionarCarro(this.carro).subscribe(
-        {
-          next: (interesse: Interesse) => {
-            this.interesseState.setCarrosLista(interesse);
-            this.utils.presentToast('top', 'Interesse demonstrado!', 1500);
-          },
-          error: async (err) => {
-            const alert = await this.alertCtrl.create({
-              header: "Atenção",
-              message:
-                "Ocorreu um problema ao remover o interesse, tente novamente mais tarde.",
-              buttons: [
-                {
-                  text: "OK",
-                  role: "confirm"
-                },
-              ],
-            });
-
-            await alert.present();
-          }
-        }
-      )
-    );
-
-  }
-
-  protected async alertRemoverCarroInteresse(id: number) {
-    const alert = await this.alertCtrl.create({
-      header: "Remover Interesse",
-      message: "Tem certeza que deseja remover o interesse neste carro?",
-      buttons: [
-        {
-          text: "Cancelar",
-          role: "cancel",
-        },
-        {
-          text: "Remover",
-          role: "confirm",
-          handler: () => {
-            this.removerCarroInteresse(id);
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-  }
-
-  private removerCarroInteresse(id: number) {
-    this.inscricao.add(
-      this.interesseApi.removerPorId(id).subscribe(
-        {
-          next: (interesse: Interesse) => {
-            this.interesseState.setCarrosLista(interesse);
-            this.utils.presentToast('top', 'Interesse removido!', 1500);
-          },
-          error: async (err) => {
-            const alert = await this.alertCtrl.create({
-              header: "Atenção",
-              message:
-                "Ocorreu um problema ao remover o interesse, tente novamente mais tarde.",
-              buttons: [
-                {
-                  text: "OK",
-                  role: "confirm"
-                },
-              ],
-            });
-
-            await alert.present();
-          }
-        }
-      )
-    );
   }
 
   async presentAlertaSiteExterno(link: string | undefined) {

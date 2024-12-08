@@ -1,11 +1,13 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import {EventEmitter, Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 
-import { Usuario } from '../../models/usuario';
-import { UsuarioService } from "../usuario/api/usuario.service";
+import {Usuario} from '../../models/usuario';
+import {UsuarioService} from "../usuario/api/usuario.service";
 import {UsuarioStateService} from "../usuario/state/usuario-state.service";
+import {FirebaseService} from "../firebase/firebase.service";
+import {UtilsService} from "../../utils/utils.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,26 +15,39 @@ import {UsuarioStateService} from "../usuario/state/usuario-state.service";
 export class AuthService {
   private usuarioAutenticado: boolean = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
-  usuario!: Usuario;
+  usuario!: Usuario | Partial<Usuario>;
+  private token: string | undefined = '';
 
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
-    private usuarioState: UsuarioStateService
+    private usuarioState: UsuarioStateService,
+    private firebaseService: FirebaseService,
+    private utils: UtilsService
   ) {
-    this.verificarToken().subscribe();
   }
 
   fazerLogin(usuario: Partial<Usuario>) {
-    this.usuarioService.getUsuario(usuario.email!, usuario.senha!).subscribe({
-      next: (dadosUsuario: Usuario | null) => {
+    this.usuarioService.loginUsuario(usuario.email!, usuario.senha!).subscribe({
+      next: async (dadosUsuario: any | null) => {
         if (dadosUsuario) {
-          this.usuario = dadosUsuario;
-          this.usuarioState.setUsuario(dadosUsuario);
-          if (usuario.permanecerConectado) {
-            const tokenDeAcesso = 'faketoken1234567890';
-            localStorage.setItem('tokenDeAcesso', tokenDeAcesso);
-          }
+          this.usuario = dadosUsuario?.usuario;
+          this.usuario.token = dadosUsuario.token;
+
+          this.usuarioState.setUsuario(this.usuario);
+
+          dadosUsuario.email = usuario.email!;
+          dadosUsuario.senha = usuario.senha!;
+          dadosUsuario.permanecerConectado = usuario.permanecerConectado!;
+
+          this.firebaseService.adicionarUsuario(dadosUsuario);
+
+          let user = await this.obterUsuario().then((user: Partial<Usuario>) => {
+            return user;
+          });
+
+          this.usuario.senha = user?.senha;
+
           this.usuarioAutenticado = true;
           this.mostrarMenuEmitter.emit(true);
           this.router.navigate(['/home']);
@@ -44,6 +59,7 @@ export class AuthService {
       error: () => {
         this.usuarioAutenticado = false;
         this.mostrarMenuEmitter.emit(false);
+        this.utils.presentToast('bottom', 'Usuário ou senha inválidos.');
       }
     });
   }
@@ -54,23 +70,37 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
+    this.firebaseService.deleteUsuario();
     this.usuarioAutenticado = false;
     this.mostrarMenuEmitter.emit(false);
     this.router.navigate(['/login']);
   }
 
-  obterToken(): string | null {
-    return localStorage.getItem('tokenDeAcesso');
+  async obterUsuario(): Promise<any | undefined> {
+    try {
+      const usuarioSnapshot = await this.firebaseService.getUsuarioById();
+      if (usuarioSnapshot?.exists()) {
+        return usuarioSnapshot.data();
+      } else {
+        console.error("Documento do usuário não encontrado.");
+        return undefined;
+      }
+    } catch (error) {
+      console.error("Erro ao obter token:", error);
+      return undefined;
+    }
   }
 
-  verificarToken(): Observable<boolean> {
-    const token = this.obterToken();
-    if (token) {
-      return this.usuarioService.getUsuarioPorToken(token).pipe(
-        map((dadosUsuario: Usuario | null) => {
+  async verificarToken(): Promise<Observable<boolean>> {
+    this.usuario = await this.obterUsuario();
+    this.token = this.usuario.token;
+    if (this.token) {
+      return this.usuarioService.getUsuarioPorToken(this.usuario.email, this.usuario.senha).pipe(
+        map((dadosUsuario: any) => {
           if (dadosUsuario) {
-            this.usuario = dadosUsuario;
-            this.usuarioState.setUsuario(dadosUsuario);
+            this.usuario = dadosUsuario?.usuario;
+            this.usuario.token = dadosUsuario.token;
+            this.usuarioState.setUsuario(this.usuario);
             this.usuarioAutenticado = true;
             this.mostrarMenuEmitter.emit(true);
             return true;

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Loca Car</string>
-    <string name="title_activity_main">Loca Car</string>
-    <string name="package_name">utfpr.LocaCar</string>
-    <string name="custom_url_scheme">utfpr.LocaCar</string>
+    <string name="app_name">LocaCar</string>
+    <string name="title_activity_main">LocaCar</string>
+    <string name="package_name">com.utfpr.locacar</string>
+    <string name="custom_url_scheme">com.utfpr.locacar</string>
 </resources>

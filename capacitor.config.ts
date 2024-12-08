@@ -1,9 +1,10 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'utfpr.LocaCar',
-  appName: 'Loca Car',
+  appId: 'com.utfpr.locacar',
+  appName: 'LocaCar',
   webDir: 'www',
+  bundledWebRuntime: false
 };
 
 export default config;

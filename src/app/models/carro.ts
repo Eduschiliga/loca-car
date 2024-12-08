@@ -1,30 +1,34 @@
 import {Usuario} from "./usuario";
 
 export interface Carro {
-  id: number;
+  id?: number;
   marca: string;
   modelo: string;
-  ano: number;
-  preco: number;
-  quilometragem: number;
-  tipoCombustivel: 'Gasolina' | 'Diesel' | 'Elétrico' | 'Híbrido';
-  transmissao: 'Manual' | 'Automática';
+  ano?: number;
+  preco?: number;
+  quilometragem?: number;
+  tipoCombustivel: string;
+  transmissao: string;
   cor: string;
-  localizacao: {
-    cidade: string;
-    estado: string;
-    pais: string;
-    endereco: string;
-  };
-  motor: {
-    potencia: number;
-    cilindrada: number;
-  };
-  status: 'Disponível' | 'Alugado' | 'Vendido';
-  imagens: string[];
+  potencia?: number;
+  status: string;
   descricao: string;
-  caracteristicas: string[];
-  usuario: Usuario;
-  dataCriacao: Date;
-  dataAtualizacao: Date;
+  usuario?: Usuario;
+  dataCriacao: Date | string;
+  dataAtualizacao: Date | string;
 }
+
+export function buildCarro() {
+  return {
+    marca: '',
+    modelo: '',
+    tipoCombustivel: '',
+    transmissao: '',
+    cor: '',
+    status: '',
+    descricao: '',
+    dataCriacao: new Date(),
+    dataAtualizacao: new Date(),
+  }
+}
+

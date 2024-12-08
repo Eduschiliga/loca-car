@@ -1,4 +1,4 @@
-package utfpr.LocaCar;
+package com.utfpr.locacar;
 
 import com.getcapacitor.BridgeActivity;
 

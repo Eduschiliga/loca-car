@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 import {Usuario} from "../../../models/usuario";
 
 @Injectable({
@@ -10,7 +10,7 @@ export class UsuarioStateService {
     telefone: "",
     dataNascimento: "",
     email: "",
-    endereco:  {
+    endereco: {
       cep: '',
       logradouro: '',
       complemento: '',
@@ -26,9 +26,10 @@ export class UsuarioStateService {
 
   usuario = this.usuario$.asObservable();
 
-  setUsuario(usuario: Usuario) {
-    this.usuario$.next(usuario);
+  setUsuario(usuario: Usuario | Partial<Usuario>) {
+    this.usuario$.next(<Usuario>usuario);
   }
 
-  constructor() { }
+  constructor() {
+  }
 }

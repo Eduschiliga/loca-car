@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
 
 import {Usuario} from '../../../models/usuario';
 
@@ -9,29 +8,38 @@ import {Usuario} from '../../../models/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private readonly usuarioUrl = '/assets/mock-usuario.json';
+  private readonly URL_SIGNUP = 'http://localhost:20001/api/auth/signup';
+  private readonly URL_LOGIN = 'http://localhost:20001/api/auth/login';
 
-  constructor(private http: HttpClient) {}
+  private readonly URL_USUARIO = 'http://localhost:20001/api/user';
 
-  getUsuario(email: string, senha: string): Observable<Usuario | null> {
-    return this.http.get<Usuario>(this.usuarioUrl).pipe(
-      map((usuario: Usuario) => (usuario.email === email && usuario.senha == senha ? usuario : null)),
-      catchError(() => of(null))
-    );
+  constructor(
+    private http: HttpClient,
+  ) {
   }
 
-  getUsuarioPorToken(token: string): Observable<Usuario | null> {
-    if (!token) {
+  getUsuarioPorEmail(email: string): Observable<Usuario> {
+    return this.http.get<Usuario>(this.URL_USUARIO + '/' + email);
+  }
+
+  cadastrarUsuario(usuario: Partial<Usuario>): Observable<Partial<Usuario>> {
+    return this.http.post<Partial<Usuario>>(this.URL_SIGNUP, usuario);
+  }
+
+  atualizarUsuario(usuario: Partial<Usuario>): Observable<Partial<Usuario>> {
+    return this.http.put<Partial<Usuario>>(this.URL_USUARIO + '/' + usuario.id, usuario);
+  }
+
+  loginUsuario(email: string, senha: string): Observable<Usuario> {
+    return this.http.post<Usuario>(this.URL_LOGIN, {email, senha});
+  }
+
+  getUsuarioPorToken(email: string | undefined, senha: string | undefined): Observable<Usuario | Partial<Usuario> | null | undefined> {
+
+    if (email && senha) {
+      return this.loginUsuario(email, senha);
+    } else {
       return of(null);
     }
-
-    return this.http.get<Usuario>(`${this.usuarioUrl}?token=${token}`).pipe(
-      map((usuario: Usuario) => {
-        return usuario.token == token ? usuario : null;
-      }),
-      catchError((error) => {
-        return of(null);
-      })
-    );
   }
 }

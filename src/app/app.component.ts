@@ -1,15 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IonicModule} from '@ionic/angular';
-import {RouterModule} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {AuthService} from "./services/auth/auth.service";
 import {navigate} from "ionicons/icons";
 import {TemaService} from "./services/tema/tema.service";
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {register} from 'swiper/element/bundle';
 import {Usuario} from "./models/usuario";
 import {UsuarioStateService} from "./services/usuario/state/usuario-state.service";
-import {Subscription} from "rxjs";
+import {filter, Subscription} from "rxjs";
 
 register();
 
@@ -21,7 +20,7 @@ register();
   imports: [
     IonicModule,
     RouterModule,
-    CommonModule
+    CommonModule,
   ],
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -29,9 +28,8 @@ export class AppComponent implements OnInit, OnDestroy {
     {title: 'Home', url: '/home', icon: 'home'},
     {title: 'Publicar Carro', url: '/publicar', icon: 'duplicate'},
     {title: 'Minhas publicações', url: '/publicacoesUsuario', icon: 'bookmarks'},
-    {title: 'Meus Interesses', url: '/interesse', icon: 'heart'},
     {title: 'Perfil', url: '/perfil', icon: 'person'},
-    {title: 'Configurações', url: '/configuracoes', icon: 'cog'},
+    // {title: 'Configurações', url: '/configuracoes', icon: 'cog'},
     {title: 'Sobre', url: '/sobre', icon: 'ellipsis-horizontal'},
     {title: 'Sair', url: '', icon: 'chevron-back-circle', action: 'sair'},
   ];
@@ -45,8 +43,17 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private usuarioState: UsuarioStateService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private router: Router, private route: ActivatedRoute
   ) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        // Verificar se está na rota de login
+        if (event.urlAfterRedirects.includes(this.route.snapshot.routeConfig?.path || '')) {
+        }
+      });
+
     this.inscricao.add(
       this.usuarioState.usuario.subscribe((usuario: Usuario) => {
         this.usuario = usuario;

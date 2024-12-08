@@ -10,16 +10,6 @@
       }
 
       <img src="assets/logo-bogacar.png" alt="Logo BogaCar" style="height: 30px; width: auto"/>
-
-      <span class="ion-justify-content-center ion-align-items-center interesse" (click)="redirecionarInteresse()">
-        @if (interesses && interesses.carros) {
-          <ion-badge class="ion-no-margin" slot="start">{{ interesses.carros.length }}</ion-badge>
-        } @else {
-              <ion-badge class="ion-no-margin" slot="start">0</ion-badge> <!-- or whatever default you want -->
-        }
-        <ion-icon class="ion-no-margin" name="car-sport-outline" size="large"></ion-icon>
-      </span>
-
     </section>
 
   </ion-toolbar>

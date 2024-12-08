@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
-import {MenuTabsComponent} from "../shared/menu-tabs/menu-tabs.component";
 import {CabecalhoComponent} from "../shared/cabecalho/cabecalho.component";
 import {CommonModule} from "@angular/common";
 import {CarroStateService} from "../services/carro/state/carro-state.service";
@@ -8,7 +7,7 @@ import {CarroApiService} from "../services/carro/api/carro-api.service";
 import {Carro} from "../models/carro";
 import {FormsModule} from "@angular/forms";
 import {CardCarroComponent} from "../detalhe-carro/components/card-carro/card-carro.component";
-import {Router, RouterLink} from "@angular/router";
+import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 
 
@@ -18,12 +17,10 @@ import {Subscription} from "rxjs";
   styleUrls: ['./home.component.scss'],
   imports: [
     IonicModule,
-    MenuTabsComponent,
     CabecalhoComponent,
     CommonModule,
     FormsModule,
-    CardCarroComponent,
-    RouterLink
+    CardCarroComponent
   ],
   standalone: true,
 })
@@ -106,6 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.carroService.buscarTodos().subscribe(
         {
           next: (carros: Carro[]) => {
+            console.log(carros)
             this.carroState.setCarrosLista(carros);
           },
           error: () => {

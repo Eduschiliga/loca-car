@@ -3,89 +3,64 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <form>
     <ion-list lines="none">
-      <!-- Informações do Veículo -->
       <ion-item-group>
         <ion-item-divider class="gradient-button">
           <ion-label>Informações do veículo</ion-label>
         </ion-item-divider>
 
+          <ion-input [(ngModel)]="formCarro.marca" name="marca" fill="outline" label="Marca" labelPlacement="stacked" placeholder="Informe a marca"></ion-input>
 
-          <ion-input fill="outline" label="Marca" labelPlacement="stacked" placeholder="Informe a marca"></ion-input>
+          <ion-input [(ngModel)]="formCarro.modelo" name="modelo" fill="outline" label="Modelo" labelPlacement="stacked" placeholder="Informe o modelo"></ion-input>
 
-          <ion-input fill="outline" label="Modelo" labelPlacement="stacked" placeholder="Informe o modelo"></ion-input>
+          <ion-input [(ngModel)]="formCarro.ano" name="ano" fill="outline" label="Ano" labelPlacement="stacked" type="number" placeholder="Informe o ano"></ion-input>
 
-          <ion-input fill="outline" label="Ano" labelPlacement="stacked" type="number" placeholder="Informe o ano"></ion-input>
+          <ion-input [(ngModel)]="formCarro.preco" name="preco" fill="outline" label="Preço" labelPlacement="stacked" type="number" placeholder="Informe o preço"></ion-input>
 
-          <ion-input fill="outline" label="Preço" labelPlacement="stacked" type="number" placeholder="Informe o preço"></ion-input>
+          <ion-input [(ngModel)]="formCarro.quilometragem" name="quilometragem" fill="outline" label="Quilometragem" labelPlacement="stacked" type="number" placeholder="Informe a quilometragem"></ion-input>
 
-          <ion-input fill="outline" label="Quilometragem" labelPlacement="stacked" type="number" placeholder="Informe a quilometragem"></ion-input>
-
-          <ion-select fill="outline" label="Tipo de Combustível" labelPlacement="stacked">
-            <ion-select-option value="gasolina">Gasolina</ion-select-option>
-            <ion-select-option value="etanol">Etanol</ion-select-option>
-            <ion-select-option value="diesel">Diesel</ion-select-option>
-            <ion-select-option value="gás natural">Gás Natural</ion-select-option>
+          <ion-select [(ngModel)]="formCarro.status" name="status" fill="outline" label="Status" labelPlacement="stacked" placeholder="Selecione o status">
+            <ion-select-option value="disponivel">Disponível</ion-select-option>
+            <ion-select-option value="alugado">Alugado</ion-select-option>
+            <ion-select-option value="vendido">Vendido</ion-select-option>
+            <ion-select-option value="negociar">A negociar</ion-select-option>
           </ion-select>
 
-          <ion-select fill="outline" label="Transmissão" labelPlacement="stacked">
+          <ion-select [(ngModel)]="formCarro.tipoCombustivel" name="tipoCombustivel" fill="outline" label="Tipo de Combustível" labelPlacement="stacked" placeholder="Selecione o tipo de combustível">
+            <ion-select-option value="Gasolina">Gasolina</ion-select-option>
+            <ion-select-option value="Etanol">Etanol</ion-select-option>
+            <ion-select-option value="Diesel">Diesel</ion-select-option>
+            <ion-select-option value="Flex">Flex</ion-select-option>
+          </ion-select>
+
+          <ion-select [(ngModel)]="formCarro.transmissao" name="transmissao" fill="outline" label="Transmissão" labelPlacement="stacked" placeholder="Selecione a transmissão">
             <ion-select-option value="manual">Manual</ion-select-option>
             <ion-select-option value="automatica">Automática</ion-select-option>
           </ion-select>
 
-          <ion-input fill="outline" label="Cor" labelPlacement="stacked" placeholder="Informe a cor"></ion-input>
+          <ion-input [(ngModel)]="formCarro.cor" fill="outline" label="Cor" name="cor" labelPlacement="stacked" placeholder="Informe a cor"></ion-input>
 
-          <ion-textarea fill="outline" label="Descrição" labelPlacement="stacked" placeholder="Descreva o veículo"></ion-textarea>
+          <ion-textarea [(ngModel)]="formCarro.descricao" fill="outline" label="Descrição" name="descricao" labelPlacement="stacked" placeholder="Descreva o veículo"></ion-textarea>
 
-          <ion-textarea fill="outline" label="Características" labelPlacement="stacked" placeholder="Liste as características"></ion-textarea>
+          <ion-input [(ngModel)]="formCarro.potencia" fill="outline" label="Potência" labelPlacement="stacked" name="potencia" type="number" placeholder="Informe a potência"></ion-input>
 
-          <ion-input fill="outline" label="Potência" labelPlacement="stacked" type="number" placeholder="Informe a potência"></ion-input>
 
-          <ion-input fill="outline" label="Cilindrada" labelPlacement="stacked" type="number" placeholder="Informe a cilindrada"></ion-input>
-      </ion-item-group>
+        <ion-item style="width: 100%;">
+          <input
+            type="file"
+            (change)="onFileSelected($event)"
+            accept="image/*"
+            multiple
+            hidden
+            #fileInput>
 
-      <!-- Localização -->
-      <ion-item-group>
-        <ion-item-divider class="gradient-button">
-          <ion-label>Localização</ion-label>
-        </ion-item-divider>
-
-          <ion-input fill="outline" label="CEP" labelPlacement="stacked" placeholder="Informe o CEP"></ion-input>
-
-          <ion-input fill="outline" label="Cidade" labelPlacement="stacked" placeholder="Informe a cidade"></ion-input>
-
-          <ion-select
+          <ion-button
+            expand="block"
             fill="outline"
-            label="UF"
-            placeholder="Selecione um estado">
-            <ion-select-option value="AC">Acre (AC)</ion-select-option>
-            <ion-select-option value="AL">Alagoas (AL)</ion-select-option>
-            <ion-select-option value="AP">Amapá (AP)</ion-select-option>
-            <ion-select-option value="AM">Amazonas (AM)</ion-select-option>
-            <ion-select-option value="BA">Bahia (BA)</ion-select-option>
-            <ion-select-option value="CE">Ceará (CE)</ion-select-option>
-            <ion-select-option value="DF">Distrito Federal (DF)</ion-select-option>
-            <ion-select-option value="ES">Espírito Santo (ES)</ion-select-option>
-            <ion-select-option value="GO">Goiás (GO)</ion-select-option>
-            <ion-select-option value="MA">Maranhão (MA)</ion-select-option>
-            <ion-select-option value="MT">Mato Grosso (MT)</ion-select-option>
-            <ion-select-option value="MS">Mato Grosso do Sul (MS)</ion-select-option>
-            <ion-select-option value="MG">Minas Gerais (MG)</ion-select-option>
-            <ion-select-option value="PA">Pará (PA)</ion-select-option>
-            <ion-select-option value="PB">Paraíba (PB)</ion-select-option>
-            <ion-select-option value="PR">Paraná (PR)</ion-select-option>
-            <ion-select-option value="PE">Pernambuco (PE)</ion-select-option>
-            <ion-select-option value="PI">Piauí (PI)</ion-select-option>
-            <ion-select-option value="RJ">Rio de Janeiro (RJ)</ion-select-option>
-            <ion-select-option value="RN">Rio Grande do Norte (RN)</ion-select-option>
-            <ion-select-option value="RS">Rio Grande do Sul (RS)</ion-select-option>
-            <ion-select-option value="RO">Rondônia (RO)</ion-select-option>
-            <ion-select-option value="RR">Roraima (RR)</ion-select-option>
-            <ion-select-option value="SC">Santa Catarina (SC)</ion-select-option>
-            <ion-select-option value="SP">São Paulo (SP)</ion-select-option>
-            <ion-select-option value="SE">Sergipe (SE)</ion-select-option>
-            <ion-select-option value="TO">Tocantins (TO)</ion-select-option>
-          </ion-select>
-
+            (click)="fileInput.click()">
+            Selecionar Imagens
+            <ion-icon name="images-outline" slot="start"></ion-icon>
+          </ion-button>
+        </ion-item>
       </ion-item-group>
     </ion-list>
 
