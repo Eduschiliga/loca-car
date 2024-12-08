@@ -33,6 +33,10 @@ export class CarroApiService {
     return this.http.post<any>(this.API_IMG, file);
   }
 
+  enviarImagemComCarro(carroImg: any){
+    return this.http.post<any>(this.API_CARIMAGE, carroImg);
+  }
+
   deletar(id: number): Observable<any> {
     return this.http.delete<any>(this.API + '/' + id);
   }

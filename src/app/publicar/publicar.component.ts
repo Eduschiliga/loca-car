@@ -85,10 +85,13 @@ export class PublicarComponent implements OnDestroy {
         )
       );
     } else {
+      let car: any;
+
       this.inscricao.add(
         this.carroService.criar(this.formCarro).subscribe(
           {
             next: (carro: any) => {
+              car = carro;
               this.utils.presentToast('bottom', 'Carro publicado com sucesso!').then();
 
             },
@@ -99,20 +102,27 @@ export class PublicarComponent implements OnDestroy {
         )
       );
 
-      this.inscricao.add(
-        this.carroService.enviarImagem(this.formData).subscribe(
-          {
-            next: (imagem: any) => {
-
-              console.log(imagem)
-              // this.router.navigate(['/home']).then();
-            },
-            error: (err) => {
-              this.utils.presentToast('bottom', 'Erro ao enviar a imagem do carro! ' + err.getMessage()).then();
-            }
-          }
-        )
-      );
+      // this.inscricao.add(
+      //   this.carroService.enviarImagem(this.formData).subscribe(
+      //     {
+      //       next: (imagem: any) => {
+      //
+      //         let carroComImg = {carro: car, imagens: [imagem]};
+      //
+      //         this.carroService.enviarImagemComCarro(carroComImg).subscribe(
+      //           {
+      //             next: () => {
+      //               this.utils.presentToast('bottom', 'Imagem enviada com sucesso!').then();
+      //             },
+      //           }
+      //         );
+      //       },
+      //       error: (err) => {
+      //         this.utils.presentToast('bottom', 'Erro ao enviar a imagem do carro! ' + err.getMessage()).then();
+      //       }
+      //     }
+      //   )
+      // );
     }
   }
 
