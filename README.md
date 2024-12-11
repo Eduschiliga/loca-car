@@ -12,7 +12,7 @@ Baixe e instale o Node.js: Confira a página oficial de download do Node para ob
 Clone o repositório do projeto: git clone <repository_url>.  
 Navegue até o diretório do projeto e realize a instalação das dependências: npm i.  
 Realizar a instalação da API conforme o repositório https://github.com/marcos221-Br/API-Trabalho-DIspositivos-Moveis.  
-Recomenda-se o uso da porta 20001 na configuração da API para melhor funcionamendo do código.
+Recomenda-se o uso da porta 20001 na configuração da API para melhor funcionamendo do código.  
 Realize o build usando npm build.  
 Instale o apk fornecida em seu dispositivo móvel para acessar o aplicativo.
   
