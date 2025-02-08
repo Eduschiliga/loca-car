@@ -10,7 +10,8 @@ import {FirebaseService} from "../firebase/firebase.service";
 import {UtilsService} from "../../utils/utils.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
+
 })
 export class AuthService {
   private usuarioAutenticado: boolean = false;
@@ -34,13 +35,10 @@ export class AuthService {
           this.usuario = dadosUsuario?.usuario.id;
           this.usuario = dadosUsuario?.usuario;
           this.usuario.token = dadosUsuario.token;
-
           this.usuarioState.setUsuario(this.usuario);
-
           dadosUsuario.email = usuario.email!;
           dadosUsuario.senha = usuario.senha!;
           dadosUsuario.permanecerConectado = usuario.permanecerConectado!;
-
           this.firebaseService.adicionarUsuario(dadosUsuario);
 
           let user = await this.obterUsuario().then((user: Partial<Usuario>) => {
@@ -51,7 +49,10 @@ export class AuthService {
 
           this.usuarioAutenticado = true;
           this.mostrarMenuEmitter.emit(true);
-          this.router.navigate(['/home']);
+
+
+
+          this.router.navigate(['/bemvindo']);
         } else {
           this.usuarioAutenticado = false;
           this.mostrarMenuEmitter.emit(false);

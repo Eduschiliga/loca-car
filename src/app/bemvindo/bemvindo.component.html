@@ -1,0 +1,27 @@
+<div class="header ion-margin-bottom ion-text-center ion-padding-horizontal">
+  <h1>
+    <strong>Bem-vindo ao <br />Boga Car</strong>
+  </h1>
+  <h3>O aplicativo que conecta com o mundo automotivo.</h3>
+</div>
+<div class="permissions ion-no-border ion-no-margin ion-no-padding">
+  <p class="ion-padding-horizontal ion-no-margin">Para começar, precisamos fazer algumas configurações rápidas:</p>
+  <ion-list class="ion-margin-top">
+    @if (hasBiometry) {
+      <ion-item>
+        <ion-icon name="finger-print" slot="start"></ion-icon>
+        <ion-label>
+          <h2>Biometria</h2>
+          <p>Use sua impressão digital para acessar o aplicativo</p>
+        </ion-label>
+        <ion-toggle slot="end" [(ngModel)]="useBiometry"
+                    [ngModelOptions]="{standalone: true}"
+                    (ionChange)="changeBiometryValue($event)"></ion-toggle>
+      </ion-item>
+    }
+  </ion-list>
+  <div class="button-list ion-padding">
+    <ion-button fill="outline" (click)="skipConfig()">Pular</ion-button>
+    <ion-button (click)="goToAlunoPage()">Continuar</ion-button>
+  </div>
+</div>

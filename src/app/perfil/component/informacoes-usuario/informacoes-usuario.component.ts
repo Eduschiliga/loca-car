@@ -105,6 +105,7 @@ export class InformacoesUsuarioComponent implements OnInit {
             this.router.navigate(['/login']).then();
           },
           error: (err: HttpErrorResponse) => {
+            console.log(this.usuario);
             this.utils.presentToast('bottom', 'Erro ao salvar usuário: ' + err.message);
           }
         }

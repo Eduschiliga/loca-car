@@ -45,7 +45,6 @@ export class PublicarComponent implements OnDestroy {
 
     if (this.rotaAtual == 'editar') {
       this.buscarCarro();
-      console.log(this.formData)
     }
   }
 
@@ -77,6 +76,8 @@ export class PublicarComponent implements OnDestroy {
           {
             next: (carro: any) => {
               this.utils.presentToast('bottom', 'Carro editado com sucesso!').then();
+              this.router.navigate(['home']);
+
             },
             error: (err) => {
               this.utils.presentToast('bottom', 'Erro ao editar o carro! ' + err.getMessage()).then();
@@ -93,6 +94,7 @@ export class PublicarComponent implements OnDestroy {
             next: (carro: any) => {
               car = carro;
               this.utils.presentToast('bottom', 'Carro publicado com sucesso!').then();
+              this.router.navigate(['home']);
 
             },
             error: (err) => {

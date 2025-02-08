@@ -25,6 +25,16 @@
           </ion-item>
 
           <div class="ion-text-center">
+            <ion-button
+              *ngIf="this.hasBiometry && this.useBiometry"
+              expand="block"
+              color="primary"
+              (click)="verificarUsuarioAutenticadoComToken()"
+              fill="outline"
+              class="w-full bold"
+              mode="md"
+            >Entrar com biometria</ion-button>
+
             <ion-button expand="block" class="gradient-button ion-margin-top ion-margin-bottom" shape="round" (click)="login()">
               Entrar
               <ion-icon slot="end" name="send-outline"></ion-icon>

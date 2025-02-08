@@ -1,8 +1,11 @@
-import { PreloadAllModules, provideRouter, Routes, withPreloading } from '@angular/router';
-import {authGuard, authGuardCanLoad} from "./guards/auth.guard";
+import {PreloadAllModules, provideRouter, Routes, withPreloading} from '@angular/router';
 import {Pag404Component} from "./pag404/pag404.component";
 
 export const routes: Routes = [
+  {
+    path: 'bemvindo',
+    loadChildren: () => import('./bemvindo/bemvindo.route').then((r) => r.bemvindoRoute),
+  },
   {
     path: 'login',
     loadChildren: () => import('./login/login.route').then((r) => r.loginRoute),

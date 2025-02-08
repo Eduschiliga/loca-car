@@ -1,13 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicModule} from '@ionic/angular';
+import {IonicModule, ToastController} from '@ionic/angular';
 import {Usuario} from '../../../models/usuario';
 import {AuthService} from '../../../services/auth/auth.service';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoadingService} from "../../../shared/loading/loading.service";
 import {Subscription} from "rxjs";
-import {Firestore} from "@angular/fire/firestore";
 import {FirebaseService} from "../../../services/firebase/firebase.service";
+import {FingerprintAIO} from "@awesome-cordova-plugins/fingerprint-aio/ngx";
+import {FingerprintOptions} from "@awesome-cordova-plugins/fingerprint-aio";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -15,8 +17,13 @@ import {FirebaseService} from "../../../services/firebase/firebase.service";
   styleUrls: ['./login.component.scss'],
   imports: [
     IonicModule,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
+  providers: [
+    FingerprintAIO,
+  ],
+
   standalone: true
 })
 export class LoginComponent implements OnInit {
@@ -26,13 +33,18 @@ export class LoginComponent implements OnInit {
     permanecerConectado: false
   };
 
+  public hasBiometry: boolean = false;
+  public useBiometry: boolean = false;
+
   private inscricao = new Subscription();
 
   constructor(
+    private toastCtrl: ToastController,
     private authService: AuthService,
     private router: Router,
     private loadingService: LoadingService,
     private firebaseService: FirebaseService,
+    private fingerAuth: FingerprintAIO,
   ) {
   }
 
@@ -40,7 +52,7 @@ export class LoginComponent implements OnInit {
     this.verificarUsuarioAutenticadoComToken().then();
   }
 
-  private async verificarUsuarioAutenticadoComToken() {
+  public async verificarUsuarioAutenticadoComToken() {
     if (this.firebaseService.idFirebase) {
       const loading = await this.loadingService.showLoading('Autenticando Usuário...');
 
@@ -48,11 +60,14 @@ export class LoginComponent implements OnInit {
         (await this.authService.verificarToken()).subscribe({
           next: (autenticado) => {
             if (autenticado) {
-              this.router.navigate(['/home']);
+              if (this.hasBiometry && this.useBiometry) {
+                this.showFingerprintAuthDlg();
+              } else {
+                this.router.navigate(['/home']);
+              }
             }
           },
           error: () => {
-
             this.router.navigate(['/login']);
             loading.dismiss();
           },
@@ -62,6 +77,35 @@ export class LoginComponent implements OnInit {
         })
       );
     }
+  }
+
+  async showFingerprintAuthDlg() {
+    let fingerprintOptions: FingerprintOptions;
+
+    fingerprintOptions = {
+      title: 'Autenticação por biometria detectada',
+      subtitle: 'UTFPR Mobile Alunos',
+      description: 'Coloque seu dedo no sensor de impressão digital',
+      disableBackup: true
+    }
+
+    this.fingerAuth.show(fingerprintOptions).then(() => {
+      this.router.navigate(['/home']);
+    }).catch((error) => {
+      this.showMessage("bottom", error.message, "Autenticação por biometria cancelada");
+      localStorage.clear();
+    });
+  }
+
+  async showMessage(position: 'top' | 'middle' | 'bottom', msg?: string | null, headMsg?: string | null | any, temp?: number | null) {
+    const toast = await this.toastCtrl.create({
+      header: headMsg ?? "",
+      message: msg ?? "",
+      duration: temp ?? 3500,
+      position: position,
+      buttons: ['X'],
+    });
+    await toast.present();
   }
 
   protected login(): void {
