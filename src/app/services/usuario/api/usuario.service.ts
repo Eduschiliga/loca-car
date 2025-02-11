@@ -8,10 +8,10 @@ import {Usuario} from '../../../models/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private readonly URL_SIGNUP = 'https://192.168.3.4:20001/api/auth/signup';
-  private readonly URL_LOGIN = 'https://192.168.3.4:20001/api/auth/login';
+  private readonly URL_SIGNUP = 'http://servercasa.com:8080/ddm/api/auth/signup';
+  private readonly URL_LOGIN = 'http://servercasa.com:8080/ddm/api/auth/login';
 
-  private readonly URL_USUARIO = 'https://192.168.3.4:20001/api/user';
+  private readonly URL_USUARIO = 'http://servercasa.com:8080/ddm/api/user';
 
   constructor(
     private http: HttpClient,
