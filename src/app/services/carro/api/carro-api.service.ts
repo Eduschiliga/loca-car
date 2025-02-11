@@ -7,9 +7,9 @@ import {Carro} from "../../../models/carro";
   providedIn: 'root'
 })
 export class CarroApiService {
-  private readonly API = 'http://servercasa.com:8080/ddm/api/car';
-  private readonly API_CARIMAGE = 'http://servercasa.com:8080/ddm/api/carimage';
-  private readonly API_IMG = 'http://servercasa.com:8080/ddm/api/image';
+  private readonly API = 'http://servercasa.com:20001/api/car';
+  private readonly API_CARIMAGE = 'http://servercasa.com:20001/api/carimage';
+  private readonly API_IMG = 'http://servercasa.com:20001/api/image';
 
 
   constructor(
